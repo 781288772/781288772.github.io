@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="data组件基础01
+data的xid
+data组件是前端model上的数据核心，xid是data组件的唯一表示，它的命名规则必须符合js变量名称命名，因为data组件为简化感知组件引用data的写法直接在model上使用xid存放了data的对象实例，这样引用数据就可以直接使用model.xid的方式，当然同样也支持model.comp（xid）的常规写法。
+
+1234&amp;lt;``input`">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WeX5入门">
+<meta property="og:url" content="http://yoursite.com/2020/05/03/WeX5入门/index.html">
+<meta property="og:site_name" content="Blog|Christina">
+<meta property="og:description" content="data组件基础01
+data的xid
+data组件是前端model上的数据核心，xid是data组件的唯一表示，它的命名规则必须符合js变量名称命名，因为data组件为简化感知组件引用data的写法直接在model上使用xid存放了data的对象实例，这样引用数据就可以直接使用model.xid的方式，当然同样也支持model.comp（xid）的常规写法。
+
+1234&amp;lt;``input`">
+<meta property="og:updated_time" content="2020-05-04T08:48:52.601Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WeX5入门">
+<meta name="twitter:description" content="data组件基础01
+data的xid
+data组件是前端model上的数据核心，xid是data组件的唯一表示，它的命名规则必须符合js变量名称命名，因为data组件为简化感知组件引用data的写法直接在model上使用xid存放了data的对象实例，这样引用数据就可以直接使用model.xid的方式，当然同样也支持model.comp（xid）的常规写法。
+
+1234&amp;lt;``input`">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/05/03/WeX5入门/"/>
+
+
+
+
+
+  <title>WeX5入门 | Blog|Christina</title>
+  
+
+
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://your-url" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+<a href="https://your-url" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Blog|Christina</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/03/WeX5入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Christina">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog|Christina">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">WeX5入门</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-03T16:28:45+08:00">
+                2020-05-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/WeX5/" itemprop="url" rel="index">
+                    <span itemprop="name">WeX5</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+<div> <div> <div style="text-align:center;color:#bfbfbf;font-size:16px;"> <span>-------- 本文结束 </span> <i class="fa fa-paw"></i> <span> 感谢阅读 --------</span> </div> </div> </div>
+
+      
+      
+
+      
+        <h1 id="data组件基础01"><a href="#data组件基础01" class="headerlink" title="data组件基础01"></a>data组件基础01</h1><ul>
+<li><p>data的xid</p>
+<p>data组件是前端model上的数据核心，xid是data组件的唯一表示，它的命名规则必须符合js变量名称命名，因为data组件为简化感知组件引用data的写法直接在model上使用xid存放了data的对象实例，这样引用数据就可以直接使用model.xid的方式，当然同样也支持model.comp（xid）的常规写法。</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;``input` `component``=``&quot;$UI/system/components/justep/input/input&quot;` `class``=``&quot;form-control&quot;</div><div class="line">          ``bind-ref``=``&quot;fruitData.ref(&apos;fName&apos;)&quot;``/&gt;</div><div class="line">&lt;``input` `component``=``&quot;$UI/system/components/justep/input/input&quot;` `class``=``&quot;form-control&quot;</div><div class="line">          ``bind-ref``=``&quot;comp(&apos;fruitData&apos;).ref(&apos;fName&apos;)&quot;``/&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>data 的列</p>
+<ul>
+<li><p>data组件的列定义</p>
+<p>列定义包括：name、type、label</p>
+<p>name：列的唯一标识</p>
+<p>type：列的数据类型，取值范围：String、integer、Long、Float、Double、Boolean、Date、Time、DateTime</p>
+<p>label：列显示名称，当没有定义时，label为name</p>
+<p>另外data组件上还有一个重要的idColumn，用来指定data数据中行id的表示列，可以理解为关系数据类型库中表上定义的key关系</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">属性： </div><div class="line">Data.defCols：存放列的定义信息</div><div class="line">Data.idColumn</div></pre></td></tr></table></figure>
+</code></pre><p>​        </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">获取列显示名相关API： </div><div class="line">Data.label(col); </div><div class="line">Row.label(col);</div></pre></td></tr></table></figure>
+<ul>
+<li><p>初始化加载状态</p>
+<p>data组件上有两个关于初始化状态属性：autoload、autoneww，表示当功能页面打开后data组件的状态，两个属性是互斥的；</p>
+<p>当autoload=true时，data组件在model的onModelConstructing时执行open操作，当autonew=true时，data组件在model的onModelConstructing时执行newData操作。</p>
+<p>注：data定义的静态数据需要autoload=true才进行加载，否自需要主动调用open方法加载</p>
+</li>
+<li><p>data的行对象</p>
+<p>data组件上的数据是二维表结构，即行列结构，上面介绍了列现在我们来看行对象</p>
+</li>
+</ul>
+<p>  首先data组件的数据存放在data.datas上，data.datas是可观察的数组，数组上的每一项就是行。通过行上扩展的parent和children，很轻松就扩展出了tree型数据结构。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Data.Row常用API：</div><div class="line">Row.ref(col);---------获取对应列的可观察数据对象，主要使用在感知组件的bind-ref</div><div class="line">Row.val(col);---------获取对应列的值，等价于Data.getValue(col,row)</div><div class="line">Row.label(col);-------获取对应列的显示名</div><div class="line">Row.index();----------获取行的索引号</div><div class="line">Row.parent();---------获取行的父</div><div class="line">Row.children();-------获取行的子</div></pre></td></tr></table></figure>
+<ul>
+<li><p>data的数据游标</p>
+<p>data‘组件的游标指的是data组件的当前行，即：data.currentRow，所有API和组件数据引用在没有显示指定行参数时使用的都是当前有游标行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">相关API：</div><div class="line">Data.getCurrentRow();---------获取当前行</div><div class="line">Data.to(row);-----------------滚动游标</div><div class="line">Data.first();-----------------游标到首行</div><div class="line">Data.last();------------------游标到末尾行</div><div class="line">Data.next();------------------游标到下一行</div><div class="line">Data.pre();-------------------游标到前一行</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="data组件基础02"><a href="#data组件基础02" class="headerlink" title="data组件基础02"></a>data组件基础02</h1><ul>
+<li><p>data组件的规则</p>
+<p>data组件提供了规则执行的机制，在data上可以定义：计算、只读、必填、约束等规则，规则都是以表达式的形式给出，表达式计算结果为true时只读，必填生效，约束表达式计算结果为true时数据有效</p>
+<p>data只读上下文包括：</p>
+<p>$model：前端model对象</p>
+<p>$data：data组件对象</p>
+<p>表达式上下文包括</p>
+<p>$model：前端model对象</p>
+<p>$data：data组件对象</p>
+<p>$row：计算的行对象</p>
+<p>$rowID：计算的行id</p>
+<p>$col：列名</p>
+</li>
+<li><p>数据遍历和查找</p>
+<p>data组件遍历方式有两种，一种使用游标滚动方式，另一种使用data.each（）函数。</p>
+<p>下面详细介绍这两种方式的差异和使用方式。</p>
+<p>游标滚动方式，这种方式由于刺激了当前行的变化，所有绑定当前行的数据感知组件都会进行变化渲染</p>
+</li>
+</ul>
+<p>  相关API：<br>  Data.getFirstRow();——-获取第一行<br>  Data.getLastRow();——–获取最后一行<br>  Data.next();————–游标移动到下一行<br>  Data.pre();—————游标移动到上一行<br>  Data.first();————–游标移动到第一行<br>  Data.last();—————游标移动到最后一行<br>  Data.to(row);————-游标移动到指定行</p>
+<p>  全数据游标滚动数据遍历代码实例：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">`var` `data = ``this``.comp(``&apos;fruitData&apos;``);``var` `lRow = data.getLastRow(), row, names = [];``data.first();``do` `&#123;``    ``row = data.getCurrentRow();``    ``names.push(data.val(``&apos;fName&apos;``));``    ``data.next();``&#125; ``while` `(lRow != row);``alert(names);`</div></pre></td></tr></table></figure>
+<p>  全数据each遍历代码实例：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">`var` `data = ``this``.comp(``&apos;fruitData&apos;``);``var` `names = [];``data.each(``function``(param)&#123;``  ``names.push(param.row.val(``&apos;fName&apos;``));``&#125;);``alert(names);`</div></pre></td></tr></table></figure>
+<p>  data组件还提供了一个函数eachall，这个函数主要用于遍历data所有数据，在主从情况下的从data上使用each遍历数据只能遍历到和当前主数据相关的从数据行，eachAll的使用和each一致。</p>
+<p>  数据查找有find函数来支持</p>
+<p>  find函数参数：</p>
+<p>  cols：列名列表</p>
+<p>  values:值列表</p>
+<p>  first：是否返回第一条，默认false</p>
+<p>  caseInsensitive：匹配时忽略大小写，默认false</p>
+<p>  partialKey：模糊匹配，数据中包含需要匹配字符就算匹配成功，默认false</p>
+<p>  all：所有数据查找</p>
+<p>  find函数根虎cols和values匹配查找返回符合行数组，没有匹配数据时返回</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//查找fID中包含&quot;E&quot;或者&quot;e&quot;的第一条数据</div><div class="line">var` `rows = ``this``.comp(``&apos;fruitData&apos;``).find([``&apos;fID&apos;``],[``&apos;e&apos;``],``true``,``true``,``true``);</div><div class="line">if``(rows.length&lt;=0) alert(``&apos;没有符合条件数据&apos;``);</div><div class="line">else` `alert(rows[0].val(``&apos;fName&apos;``));</div><div class="line">//查找fName=&quot;苹果&quot;，fWeight=100的数据</div><div class="line">var` `rows = ``this``.comp(``&apos;fruitData&apos;``).find([``&apos;fName&apos;``,``&apos;fWeight&apos;``],[``&apos;苹果&apos;``,100]);</div><div class="line">if``(rows.length==0) alert(``&apos;没有符合条件数据&apos;``);</div></pre></td></tr></table></figure>
+<ul>
+<li><p>聚合运算</p>
+<p>data组件提供了常用的统计函数：count、sum、avg、min、max这些函数都是基于前端data数据的，没有加载到前端data中的数据不包括在计算中，注意：返回的数值精度受到js的number精度影响。</p>
+<p>这些函数使用都很简单，所有函数上都有一个filterCallback参数，可以传入过滤数据的回调方法，filterCallback需要返回bollean，为true时行有效，回调函数给出参数event，{‘data</p>
+<p>:data对象,row：行}，当没有给出filterCallback参数时统计data的全部数据。</p>
+</li>
+</ul>
+<ul>
+<li><p>扩展数据</p>
+<p>data组件不光可以加载行列数据，同时也提供了加载扩展数据的能力，这就是data组件userdata扩展数据的机制。在data组件加载的数据上增加userdata数据。</p>
+<p>json数据格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">`&#123;``    ``&quot;@type&quot;` `: ``&quot;table&quot;``,``    ``&quot;rows&quot;` `: [...],``    ``&quot;userdata&quot;` `: &#123;``        ``&quot;DEMO_TABLE1Count&quot;` `: 148``    ``&#125;``&#125;`</div></pre></td></tr></table></figure>
+<p>同时提供了相关的API：<br>Data.getUserData(name,row);—————-获取扩展数据，name为扩展数据的名称，row为指定的行，当没有指定row时为data的扩展数据<br>Data.setUserData(name,value,row);———-设置扩展数据<br>上面介绍的后端统计就是通过这个机制实现的</p>
+</li>
+</ul>
+<h1 id="data组件基础03"><a href="#data组件基础03" class="headerlink" title="data组件基础03"></a>data组件基础03</h1><ul>
+<li><p>新增</p>
+<ol>
+<li><p>data组件的新增相关API</p>
+<p>Data.newData(option);——–后端新增，返回一行或者多行新增数据</p>
+</li>
+</ol>
+</li>
+</ul>
+<pre><code>Data.add(defaultValues,parent);——–前端新增一行数据，状态需要开发者设定，defaultValues,parent参数同上；不会触发data相关事件
+</code></pre><ol>
+<li><p>新增数据相关事件</p>
+<p>onBeforeNew(event)——-新增前，可以通过event.cancel=true终止新增动作</p>
+<p>onCustomNew(event);——业务数据新增接管，完全接管new动作，需要接管此事件完成data的newData逻辑</p>
+<p>onAfterNew(event);——业务数据新增后</p>
+<p>onDataChange(event);——Data数据状态变化事件，新增后会触发</p>
+<p>onNewCreateParam(event);—–BizData事件，业务新增数据创建新增参数事件，可以增加和修改用户自定义的参数</p>
+<p>onNewError(event);———–BizData事件，新增失败后事件</p>
+</li>
+</ol>
+<ul>
+<li><p>刷新</p>
+<ol>
+<li><p>data组件数据刷新加载API</p>
+<p>Data.open()—-加载数据行为和refreshData一致，只是当Data.isLoaded()==false时执行数据加载<br>Data.loadNextPageData(option)—-加载下一页的数据，limit!=-1时可以使用<br>option参数同Data.refreshData(option)option参数<br>Data.loadAllPageData(option)—-在分页状态加载所有数据，limit!=-1时可以使用<br>option参数同Data.refreshData(option)option参数<br>Data.loadPageData(pageIndex,option)—-分页模式下加载第N页数据，参数pageIndex指定需要加载的页，limit!=-1时可以使用<br>option参数同Data.refreshData(option)option参数<br>Data.loadData(data,append,parent,index)—-加载数据到Data<br>data：{Json Object} 必须参数，需要加载的Json数据，格式同biz层序列化格式，即包含rows数组的数据<br>append：{Boolean} 数据增加模式 true/false<br>parent：{Data.Row} 树形数据时增加数据的父，为null时数据加载到根下<br>index：{Integer} 加载数据的插入位置,缺省数据插入到末尾</p>
+</li>
+<li><p>Data组件数据刷新相关事件</p>
+<ol>
+<li>onBeforeRefresh(event)——-刷新前，可以通过event.cancel=true终止刷新动作</li>
+<li>onCustomRefresh(event)——-业务数据刷新接管，完全接管刷新动作</li>
+<li>onAfterRefresh(event)——-业务数据刷新后</li>
+<li>onDataChange(event);——Data数据状态变化事件，刷新后会触发</li>
+<li>onRefreshCreateParam(event)——-BizData事件，业务刷新数据创建刷新参数事件，可以增加和修改用户自定义的参数</li>
+<li>onRefreshError(event)——-BizData事件，业务刷新数据失败后事件</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>保存</p>
+<ol>
+<li><p>Data组件数据保存API</p>
+<ul>
+<li>Data.saveData(option)——-业务数据保存方法，向后端提交修改的数据，包括从Data数据</li>
+</ul>
+</li>
+<li><p>Data组件数据保存事件</p>
+<ul>
+<li>onBeforeSave(event)——-业务数据保存前，事件在批事务启动后触发，写在这个事件里的biz action请求将在一个批操作完成</li>
+<li>onCustomSave(event)——-业务数据保存接管，完全接管保存动作</li>
+<li>onAfterSave(event)——-业务数据保存后，事件在批事务启动后触发，写在这个事件里的biz action请求将在一个批操作完成</li>
+<li>nSaveCommit(event)——-业务数据保存事务提交后，数据提交成功，BizData组件是BizServer保存成功后触发，Data组件是开发者保存提交成功后通过API Data.applyUpdates()刺激触发</li>
+<li>onSaveCreateParam(event)——-BizData事件，业务数据保存创建保存参数事件，可以增加和修改用户自定义的参数</li>
+<li>onSaveError(event)——-BizData事件，业务保存失败后事件</li>
+</ul>
+</li>
+<li><p>删除</p>
+<p>Data组件删除根据directDeleteMode属性分为立即删除和跟随saveData删除，directDeleteMode==true时BizData直接请求BizServer saveAction进行数据删除，directDeleteMode!=true时deleteData只是把数据放入data的删除队列，直到saveData时才一起提交所有修改数据，也就是说BizData组件的删除都是使用BizServer saveAction实现。</p>
+<ul>
+<li><p>Data组件删除API</p>
+<ul>
+<li>Data.deleteData(rows)<br>Data.deleteAllData()</li>
+</ul>
+</li>
+<li><p>Data组件删除事件</p>
+<ul>
+<li>onBeforeDelete(event)——-业务数据删除前</li>
+<li>onCustomDelete(event)——-业务数据删除接管，完全接管delete动作</li>
+<li>onAfterDelete(event)——-业务数据删除后</li>
+<li>onDeleteError(event)——-BizData组件事件，删除提交失败后事件</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<p>  ​    </p>
+
+      
+    </div>
+    
+    
+    
+<div> <div> <div style="text-align:center;color:#bfbfbf;font-size:16px;"> <span>-------- 本文结束 </span> <i class="fa fa-paw"></i> <span> 感谢阅读 --------</span> </div> </div> </div>
+
+    
+
+    
+
+    
+
+
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/20/JavaScript-对象/" rel="next" title="JavaScript-对象">
+                <i class="fa fa-chevron-left"></i> JavaScript-对象
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="John Christina" />
+            
+              <p class="site-author-name" itemprop="name">John Christina</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+<script type="text/javascript" src="//rf.revolvermaps.com/0/0/5.js?i=5b3ac4cx0nk&amp;m=0&amp;c=ff0000&amp;cr1=ffffff" async="async"></script>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#data组件基础01"><span class="nav-number">1.</span> <span class="nav-text">data组件基础01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#data组件基础02"><span class="nav-number">2.</span> <span class="nav-text">data组件基础02</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#data组件基础03"><span class="nav-number">3.</span> <span class="nav-text">data组件基础03</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共4.8k字</span>
+</div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Christina</span>
+
+  
+</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+<script src="/live2d-widget/autoload.js"></script>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+
+
+</body>
+</html>
+
