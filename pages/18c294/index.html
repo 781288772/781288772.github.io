@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Promise 原理 | Christina&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.8.0">
+    <link rel="icon" href="/img/favicon.ico">
+    <script data-ad-client="ca-pub-7828333725993554" async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <meta name="description" content="web前端技术博客,简洁至上,专注web前端学习与总结。JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github等技术文章。">
+    <meta name="keywords" content="前端博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,markdown">
+    <meta name="baidu-site-verification" content="7F55weZDDc">
+    <meta name="theme-color" content="#11a8cd">
+    <link rel="preload" href="/assets/css/0.styles.66f0c31b.css" as="style"><link rel="preload" href="/assets/js/app.d12d594d.js" as="script"><link rel="preload" href="/assets/js/2.46fb657d.js" as="script"><link rel="preload" href="/assets/js/3.c8a76ed4.js" as="script"><link rel="preload" href="/assets/js/48.a80dcaa4.js" as="script"><link rel="prefetch" href="/assets/js/10.674fa863.js"><link rel="prefetch" href="/assets/js/100.ac71d08a.js"><link rel="prefetch" href="/assets/js/101.239bb573.js"><link rel="prefetch" href="/assets/js/102.cdea862b.js"><link rel="prefetch" href="/assets/js/103.68378910.js"><link rel="prefetch" href="/assets/js/104.0569afdf.js"><link rel="prefetch" href="/assets/js/105.d3b0811c.js"><link rel="prefetch" href="/assets/js/106.e3f26636.js"><link rel="prefetch" href="/assets/js/107.97e5478f.js"><link rel="prefetch" href="/assets/js/108.fa565483.js"><link rel="prefetch" href="/assets/js/109.438f3d0f.js"><link rel="prefetch" href="/assets/js/11.cfd4cd3f.js"><link rel="prefetch" href="/assets/js/110.94249f66.js"><link rel="prefetch" href="/assets/js/111.9e7e00fd.js"><link rel="prefetch" href="/assets/js/112.5df7f06c.js"><link rel="prefetch" href="/assets/js/113.13333f01.js"><link rel="prefetch" href="/assets/js/114.8c9667c9.js"><link rel="prefetch" href="/assets/js/115.fc3ccb9b.js"><link rel="prefetch" href="/assets/js/116.13110198.js"><link rel="prefetch" href="/assets/js/117.0ca43ab2.js"><link rel="prefetch" href="/assets/js/118.5192c0f4.js"><link rel="prefetch" href="/assets/js/119.9d2aab76.js"><link rel="prefetch" href="/assets/js/12.464c9999.js"><link rel="prefetch" href="/assets/js/120.78f6ad01.js"><link rel="prefetch" href="/assets/js/121.ed24a1f0.js"><link rel="prefetch" href="/assets/js/122.80dc8f44.js"><link rel="prefetch" href="/assets/js/123.c8545d7a.js"><link rel="prefetch" href="/assets/js/124.764fa4c6.js"><link rel="prefetch" href="/assets/js/125.316a9322.js"><link rel="prefetch" href="/assets/js/126.de2332f5.js"><link rel="prefetch" href="/assets/js/127.3fe26d63.js"><link rel="prefetch" href="/assets/js/128.65c770c1.js"><link rel="prefetch" href="/assets/js/129.2a3a514a.js"><link rel="prefetch" href="/assets/js/13.22559645.js"><link rel="prefetch" href="/assets/js/130.241aee20.js"><link rel="prefetch" href="/assets/js/131.ea8f2db3.js"><link rel="prefetch" href="/assets/js/132.bd8e2d23.js"><link rel="prefetch" href="/assets/js/133.6c597c64.js"><link rel="prefetch" href="/assets/js/134.9c6946a0.js"><link rel="prefetch" href="/assets/js/135.8bb9f4db.js"><link rel="prefetch" href="/assets/js/136.473ead65.js"><link rel="prefetch" href="/assets/js/137.d4ac42a5.js"><link rel="prefetch" href="/assets/js/138.4a1e0d82.js"><link rel="prefetch" href="/assets/js/139.313a1174.js"><link rel="prefetch" href="/assets/js/14.22e1b166.js"><link rel="prefetch" href="/assets/js/140.f02e4b17.js"><link rel="prefetch" href="/assets/js/141.134dff34.js"><link rel="prefetch" href="/assets/js/142.8657af00.js"><link rel="prefetch" href="/assets/js/143.6c86b486.js"><link rel="prefetch" href="/assets/js/144.b73d6d6a.js"><link rel="prefetch" href="/assets/js/145.c797e29c.js"><link rel="prefetch" href="/assets/js/146.35f4e162.js"><link rel="prefetch" href="/assets/js/147.8a2c57be.js"><link rel="prefetch" href="/assets/js/148.12a393bc.js"><link rel="prefetch" href="/assets/js/149.5c367acf.js"><link rel="prefetch" href="/assets/js/15.72faae51.js"><link rel="prefetch" href="/assets/js/150.3dd8cb48.js"><link rel="prefetch" href="/assets/js/151.e4401960.js"><link rel="prefetch" href="/assets/js/152.3c6f9423.js"><link rel="prefetch" href="/assets/js/153.44ae5095.js"><link rel="prefetch" href="/assets/js/154.e8f38461.js"><link rel="prefetch" href="/assets/js/155.171873ee.js"><link rel="prefetch" href="/assets/js/156.32424155.js"><link rel="prefetch" href="/assets/js/157.b34e6755.js"><link rel="prefetch" href="/assets/js/158.496b89a4.js"><link rel="prefetch" href="/assets/js/159.f79bbd97.js"><link rel="prefetch" href="/assets/js/16.92772ec6.js"><link rel="prefetch" href="/assets/js/160.f287f2ce.js"><link rel="prefetch" href="/assets/js/161.3101680a.js"><link rel="prefetch" href="/assets/js/162.f6038843.js"><link rel="prefetch" href="/assets/js/163.93ffeb45.js"><link rel="prefetch" href="/assets/js/164.b2b66982.js"><link rel="prefetch" href="/assets/js/165.715c3038.js"><link rel="prefetch" href="/assets/js/166.4cbdd891.js"><link rel="prefetch" href="/assets/js/167.27461b45.js"><link rel="prefetch" href="/assets/js/168.01e2e800.js"><link rel="prefetch" href="/assets/js/169.270dcc05.js"><link rel="prefetch" href="/assets/js/17.dbcdbc6c.js"><link rel="prefetch" href="/assets/js/170.6b5eecec.js"><link rel="prefetch" href="/assets/js/171.bdc6dbdb.js"><link rel="prefetch" href="/assets/js/172.a74d0e4f.js"><link rel="prefetch" href="/assets/js/173.077ba269.js"><link rel="prefetch" href="/assets/js/174.d52eaeb2.js"><link rel="prefetch" href="/assets/js/175.0798f0d2.js"><link rel="prefetch" href="/assets/js/176.eef3f21f.js"><link rel="prefetch" href="/assets/js/177.fb7d7c58.js"><link rel="prefetch" href="/assets/js/178.2e211670.js"><link rel="prefetch" href="/assets/js/179.f1eba7ec.js"><link rel="prefetch" href="/assets/js/18.2193c5dd.js"><link rel="prefetch" href="/assets/js/180.90296a57.js"><link rel="prefetch" href="/assets/js/181.1cf5a434.js"><link rel="prefetch" href="/assets/js/182.60d1fb2b.js"><link rel="prefetch" href="/assets/js/183.377fd618.js"><link rel="prefetch" href="/assets/js/184.97bc609b.js"><link rel="prefetch" href="/assets/js/185.17ce8b93.js"><link rel="prefetch" href="/assets/js/186.327ba4dc.js"><link rel="prefetch" href="/assets/js/187.5aa739e6.js"><link rel="prefetch" href="/assets/js/188.70fa7f91.js"><link rel="prefetch" href="/assets/js/189.768ff6fd.js"><link rel="prefetch" href="/assets/js/19.b36d47d5.js"><link rel="prefetch" href="/assets/js/190.292d6fb5.js"><link rel="prefetch" href="/assets/js/191.24a3a9d7.js"><link rel="prefetch" href="/assets/js/192.146b1f7b.js"><link rel="prefetch" href="/assets/js/193.137a3833.js"><link rel="prefetch" href="/assets/js/194.cf0427f0.js"><link rel="prefetch" href="/assets/js/195.8f67295e.js"><link rel="prefetch" href="/assets/js/196.4915311b.js"><link rel="prefetch" href="/assets/js/197.b81cd596.js"><link rel="prefetch" href="/assets/js/198.9fe8dbe9.js"><link rel="prefetch" href="/assets/js/199.94e12d73.js"><link rel="prefetch" href="/assets/js/20.9575227d.js"><link rel="prefetch" href="/assets/js/200.01465f3e.js"><link rel="prefetch" href="/assets/js/201.00b17280.js"><link rel="prefetch" href="/assets/js/202.947d9647.js"><link rel="prefetch" href="/assets/js/203.1c9306e0.js"><link rel="prefetch" href="/assets/js/204.e1e0e68c.js"><link rel="prefetch" href="/assets/js/205.d1e15e78.js"><link rel="prefetch" href="/assets/js/206.bb405dc3.js"><link rel="prefetch" href="/assets/js/207.f37cb3e8.js"><link rel="prefetch" href="/assets/js/208.dfdded0f.js"><link rel="prefetch" href="/assets/js/209.320775a9.js"><link rel="prefetch" href="/assets/js/21.82f30d70.js"><link rel="prefetch" href="/assets/js/210.bf31c6b4.js"><link rel="prefetch" href="/assets/js/211.1d81032a.js"><link rel="prefetch" href="/assets/js/212.999f5c1d.js"><link rel="prefetch" href="/assets/js/213.c37099c2.js"><link rel="prefetch" href="/assets/js/214.baf345a9.js"><link rel="prefetch" href="/assets/js/215.2017e060.js"><link rel="prefetch" href="/assets/js/216.e5ed06c9.js"><link rel="prefetch" href="/assets/js/217.44c7043f.js"><link rel="prefetch" href="/assets/js/218.5999fd64.js"><link rel="prefetch" href="/assets/js/219.d80c615a.js"><link rel="prefetch" href="/assets/js/22.0d9b7472.js"><link rel="prefetch" href="/assets/js/220.8b32ad16.js"><link rel="prefetch" href="/assets/js/221.8757f467.js"><link rel="prefetch" href="/assets/js/222.e31d253e.js"><link rel="prefetch" href="/assets/js/223.d69e856e.js"><link rel="prefetch" href="/assets/js/224.41d006f0.js"><link rel="prefetch" href="/assets/js/225.368856c7.js"><link rel="prefetch" href="/assets/js/226.659a5a1f.js"><link rel="prefetch" href="/assets/js/227.b299c645.js"><link rel="prefetch" href="/assets/js/228.8ca17a96.js"><link rel="prefetch" href="/assets/js/229.4a74255f.js"><link rel="prefetch" href="/assets/js/23.b70ce5db.js"><link rel="prefetch" href="/assets/js/230.a4278411.js"><link rel="prefetch" href="/assets/js/231.1ddbe8cd.js"><link rel="prefetch" href="/assets/js/232.88496e92.js"><link rel="prefetch" href="/assets/js/233.95db0181.js"><link rel="prefetch" href="/assets/js/234.a4efc16d.js"><link rel="prefetch" href="/assets/js/235.47a53878.js"><link rel="prefetch" href="/assets/js/236.dd67d2d0.js"><link rel="prefetch" href="/assets/js/237.2a247e95.js"><link rel="prefetch" href="/assets/js/238.d57eb8ba.js"><link rel="prefetch" href="/assets/js/239.573cd9ec.js"><link rel="prefetch" href="/assets/js/24.93d1f190.js"><link rel="prefetch" href="/assets/js/240.634a9faf.js"><link rel="prefetch" href="/assets/js/241.4e4b1650.js"><link rel="prefetch" href="/assets/js/242.641de0bf.js"><link rel="prefetch" href="/assets/js/243.c3e26a7a.js"><link rel="prefetch" href="/assets/js/244.339909f5.js"><link rel="prefetch" href="/assets/js/245.9ed0d8a4.js"><link rel="prefetch" href="/assets/js/246.eadc26a2.js"><link rel="prefetch" href="/assets/js/247.8c1765e8.js"><link rel="prefetch" href="/assets/js/248.5a86cbbc.js"><link rel="prefetch" href="/assets/js/249.dabfaf5d.js"><link rel="prefetch" href="/assets/js/25.67beaca9.js"><link rel="prefetch" href="/assets/js/250.94908fe3.js"><link rel="prefetch" href="/assets/js/251.bce46b6a.js"><link rel="prefetch" href="/assets/js/252.2a1b8768.js"><link rel="prefetch" href="/assets/js/253.e8bf5047.js"><link rel="prefetch" href="/assets/js/254.aab666e5.js"><link rel="prefetch" href="/assets/js/255.d564daa8.js"><link rel="prefetch" href="/assets/js/256.c0ec9ab8.js"><link rel="prefetch" href="/assets/js/257.fed7aa8f.js"><link rel="prefetch" href="/assets/js/258.c8a133a6.js"><link rel="prefetch" href="/assets/js/259.1e70a2fa.js"><link rel="prefetch" href="/assets/js/26.5cbe04eb.js"><link rel="prefetch" href="/assets/js/260.900d0be1.js"><link rel="prefetch" href="/assets/js/261.e9c12f7e.js"><link rel="prefetch" href="/assets/js/262.51861b73.js"><link rel="prefetch" href="/assets/js/263.15554c6e.js"><link rel="prefetch" href="/assets/js/264.98367f56.js"><link rel="prefetch" href="/assets/js/265.27d26c5a.js"><link rel="prefetch" href="/assets/js/266.922cc6cd.js"><link rel="prefetch" href="/assets/js/267.f8a8dae4.js"><link rel="prefetch" href="/assets/js/268.ebeb1c6a.js"><link rel="prefetch" href="/assets/js/269.75ffdd51.js"><link rel="prefetch" href="/assets/js/27.266dc024.js"><link rel="prefetch" href="/assets/js/270.fdf1e498.js"><link rel="prefetch" href="/assets/js/271.512eb76f.js"><link rel="prefetch" href="/assets/js/272.885f8dcf.js"><link rel="prefetch" href="/assets/js/273.51a69562.js"><link rel="prefetch" href="/assets/js/274.6e9a1394.js"><link rel="prefetch" href="/assets/js/275.82737a76.js"><link rel="prefetch" href="/assets/js/276.d5c05337.js"><link rel="prefetch" href="/assets/js/277.56668a1d.js"><link rel="prefetch" href="/assets/js/278.8f7ab888.js"><link rel="prefetch" href="/assets/js/279.299b8969.js"><link rel="prefetch" href="/assets/js/28.3d934bda.js"><link rel="prefetch" href="/assets/js/280.9f7077c2.js"><link rel="prefetch" href="/assets/js/281.21d6798f.js"><link rel="prefetch" href="/assets/js/282.7d9bfaa2.js"><link rel="prefetch" href="/assets/js/283.a2c4e64d.js"><link rel="prefetch" href="/assets/js/284.959d1f59.js"><link rel="prefetch" href="/assets/js/285.d973cecb.js"><link rel="prefetch" href="/assets/js/286.90839dc5.js"><link rel="prefetch" href="/assets/js/287.ce217720.js"><link rel="prefetch" href="/assets/js/288.d3ed1cb1.js"><link rel="prefetch" href="/assets/js/289.573f9172.js"><link rel="prefetch" href="/assets/js/29.07ac8fcd.js"><link rel="prefetch" href="/assets/js/290.c0fab80a.js"><link rel="prefetch" href="/assets/js/291.95de3afe.js"><link rel="prefetch" href="/assets/js/292.5f8a181c.js"><link rel="prefetch" href="/assets/js/293.e4b47317.js"><link rel="prefetch" href="/assets/js/294.a8f42e7e.js"><link rel="prefetch" href="/assets/js/295.4f779262.js"><link rel="prefetch" href="/assets/js/296.2cd82964.js"><link rel="prefetch" href="/assets/js/297.145bcc62.js"><link rel="prefetch" href="/assets/js/298.914f2bf3.js"><link rel="prefetch" href="/assets/js/299.85b6474e.js"><link rel="prefetch" href="/assets/js/30.71c88b7c.js"><link rel="prefetch" href="/assets/js/300.50d858f6.js"><link rel="prefetch" href="/assets/js/301.505f84ca.js"><link rel="prefetch" href="/assets/js/302.2217a5c3.js"><link rel="prefetch" href="/assets/js/303.785210ea.js"><link rel="prefetch" href="/assets/js/304.8b219e33.js"><link rel="prefetch" href="/assets/js/305.fbe9fb4c.js"><link rel="prefetch" href="/assets/js/31.caa9b5b1.js"><link rel="prefetch" href="/assets/js/32.70935854.js"><link rel="prefetch" href="/assets/js/33.1ad0b21f.js"><link rel="prefetch" href="/assets/js/34.c8affc2a.js"><link rel="prefetch" href="/assets/js/35.26af50d0.js"><link rel="prefetch" href="/assets/js/36.af71c5f7.js"><link rel="prefetch" href="/assets/js/37.38fb5966.js"><link rel="prefetch" href="/assets/js/38.68426430.js"><link rel="prefetch" href="/assets/js/39.8d6b9b69.js"><link rel="prefetch" href="/assets/js/4.0ded125d.js"><link rel="prefetch" href="/assets/js/40.7d734d03.js"><link rel="prefetch" href="/assets/js/41.59004f2e.js"><link rel="prefetch" href="/assets/js/42.a367210f.js"><link rel="prefetch" href="/assets/js/43.0b776250.js"><link rel="prefetch" href="/assets/js/44.719245be.js"><link rel="prefetch" href="/assets/js/45.f6f8387a.js"><link rel="prefetch" href="/assets/js/46.f7b97cae.js"><link rel="prefetch" href="/assets/js/47.ec8ee83f.js"><link rel="prefetch" href="/assets/js/49.8e52daaf.js"><link rel="prefetch" href="/assets/js/5.7c959893.js"><link rel="prefetch" href="/assets/js/50.90b699bf.js"><link rel="prefetch" href="/assets/js/51.256e597d.js"><link rel="prefetch" href="/assets/js/52.fe68f6be.js"><link rel="prefetch" href="/assets/js/53.a26058dd.js"><link rel="prefetch" href="/assets/js/54.43b01aa9.js"><link rel="prefetch" href="/assets/js/55.28737a63.js"><link rel="prefetch" href="/assets/js/56.09503493.js"><link rel="prefetch" href="/assets/js/57.a97f77e9.js"><link rel="prefetch" href="/assets/js/58.0abe3264.js"><link rel="prefetch" href="/assets/js/59.75c33b72.js"><link rel="prefetch" href="/assets/js/6.164d6b4d.js"><link rel="prefetch" href="/assets/js/60.d6caa21e.js"><link rel="prefetch" href="/assets/js/61.48b5823d.js"><link rel="prefetch" href="/assets/js/62.d694c98f.js"><link rel="prefetch" href="/assets/js/63.758c7c77.js"><link rel="prefetch" href="/assets/js/64.fd69acc7.js"><link rel="prefetch" href="/assets/js/65.88dadac6.js"><link rel="prefetch" href="/assets/js/66.68b4956b.js"><link rel="prefetch" href="/assets/js/67.856e2cda.js"><link rel="prefetch" href="/assets/js/68.c9084ebe.js"><link rel="prefetch" href="/assets/js/69.660d2100.js"><link rel="prefetch" href="/assets/js/7.a2a4c5ee.js"><link rel="prefetch" href="/assets/js/70.69cc0306.js"><link rel="prefetch" href="/assets/js/71.4a056ee3.js"><link rel="prefetch" href="/assets/js/72.acfce403.js"><link rel="prefetch" href="/assets/js/73.0235c981.js"><link rel="prefetch" href="/assets/js/74.2ffc0b13.js"><link rel="prefetch" href="/assets/js/75.f2c653c4.js"><link rel="prefetch" href="/assets/js/76.a4fbc87c.js"><link rel="prefetch" href="/assets/js/77.f195c8b0.js"><link rel="prefetch" href="/assets/js/78.80f88b18.js"><link rel="prefetch" href="/assets/js/79.44046d94.js"><link rel="prefetch" href="/assets/js/8.528c3e8c.js"><link rel="prefetch" href="/assets/js/80.d0f99f2d.js"><link rel="prefetch" href="/assets/js/81.bca94214.js"><link rel="prefetch" href="/assets/js/82.520a5ad2.js"><link rel="prefetch" href="/assets/js/83.e07495fd.js"><link rel="prefetch" href="/assets/js/84.1f87a896.js"><link rel="prefetch" href="/assets/js/85.ec233152.js"><link rel="prefetch" href="/assets/js/86.d3c40d64.js"><link rel="prefetch" href="/assets/js/87.521c4aa2.js"><link rel="prefetch" href="/assets/js/88.768f58ae.js"><link rel="prefetch" href="/assets/js/89.ae8c97de.js"><link rel="prefetch" href="/assets/js/9.2eb7e579.js"><link rel="prefetch" href="/assets/js/90.d7d93085.js"><link rel="prefetch" href="/assets/js/91.e6c3d7e5.js"><link rel="prefetch" href="/assets/js/92.432f42dd.js"><link rel="prefetch" href="/assets/js/93.57714e1d.js"><link rel="prefetch" href="/assets/js/94.f727bf45.js"><link rel="prefetch" href="/assets/js/95.ef00921d.js"><link rel="prefetch" href="/assets/js/96.9907017c.js"><link rel="prefetch" href="/assets/js/97.e3f6459a.js"><link rel="prefetch" href="/assets/js/98.8c81e6ad.js"><link rel="prefetch" href="/assets/js/99.c5f331bd.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.66f0c31b.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-body-img"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.png" alt="Christina's blog" class="logo"> <span class="site-name can-hide">Christina's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><a href="/web/" class="link-title">前端</a> <span class="title" style="display:none;">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>前端文章</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/pages/8143cc480faf9a11/" class="nav-link">JavaScript</a></li></ul></li><li class="dropdown-item"><h4>学习笔记</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note/javascript/" class="nav-link">《JavaScript教程》</a></li><li class="dropdown-subitem"><a href="/note/js/" class="nav-link">《JavaScript高级程序设计》</a></li><li class="dropdown-subitem"><a href="/note/es6/" class="nav-link">《ES6 教程》</a></li><li class="dropdown-subitem"><a href="/note/vue/" class="nav-link">《Vue》</a></li><li class="dropdown-subitem"><a href="/note/react/" class="nav-link">《React》</a></li><li class="dropdown-subitem"><a href="/note/typescript-axios/" class="nav-link">《TypeScript 从零实现 axios》</a></li><li class="dropdown-subitem"><a href="/note/git/" class="nav-link">《Git》</a></li><li class="dropdown-subitem"><a href="/pages/51afd6/" class="nav-link">《TypeScript》</a></li><li class="dropdown-subitem"><a href="/pages/4643cd/" class="nav-link">《JS设计模式总结》</a></li><li class="dropdown-subitem"><a href="/note/uniapp/" class="nav-link">《uniapp》</a></li><li class="dropdown-subitem"><a href="/note/vue3/" class="nav-link">《vue3》</a></li><li class="dropdown-subitem"><a href="/note/nestjs/" class="nav-link">《nestjs》</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="页面" class="dropdown-title"><a href="/ui/" class="link-title">页面</a> <span class="title" style="display:none;">页面</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/8309a5b876fc95e3/" class="nav-link">HTML</a></li><li class="dropdown-item"><!----> <a href="/pages/0a83b083bdf257cb/" class="nav-link">CSS</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术" class="dropdown-title"><a href="/technology/" class="link-title">技术</a> <span class="title" style="display:none;">技术</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/9a7ee40fc232253e/" class="nav-link">技术文档</a></li><li class="dropdown-item"><!----> <a href="/pages/4c778760be26d8b3/" class="nav-link">GitHub技巧</a></li><li class="dropdown-item"><!----> <a href="/pages/117708e0af7f0bd9/" class="nav-link">Nodejs</a></li><li class="dropdown-item"><!----> <a href="/pages/41f87d890d0a02af/" class="nav-link">博客搭建</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多" class="dropdown-title"><a href="/more/" class="link-title">更多</a> <span class="title" style="display:none;">更多</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/f2a556/" class="nav-link">学习</a></li><li class="dropdown-item"><!----> <a href="/pages/aea6571b7a8bae86/" class="nav-link">面试</a></li><li class="dropdown-item"><!----> <a href="/pages/2d615df9a36a98ed/" class="nav-link">心情杂货</a></li><li class="dropdown-item"><!----> <a href="/pages/baaa02/" class="nav-link">实用技巧</a></li><li class="dropdown-item"><!----> <a href="/friends/" class="nav-link">友情链接</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">关于</a></div><div class="nav-item"><a href="/pages/beb6c0bd8a66cea6/" class="nav-link">收藏</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <a href="https://github.com/781288772/vuepressBlog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="/img/avatar.jpg"> <div class="blogger-info"><h3>Christina</h3> <span>前端小白</span></div></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><a href="/web/" class="link-title">前端</a> <span class="title" style="display:none;">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>前端文章</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/pages/8143cc480faf9a11/" class="nav-link">JavaScript</a></li></ul></li><li class="dropdown-item"><h4>学习笔记</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note/javascript/" class="nav-link">《JavaScript教程》</a></li><li class="dropdown-subitem"><a href="/note/js/" class="nav-link">《JavaScript高级程序设计》</a></li><li class="dropdown-subitem"><a href="/note/es6/" class="nav-link">《ES6 教程》</a></li><li class="dropdown-subitem"><a href="/note/vue/" class="nav-link">《Vue》</a></li><li class="dropdown-subitem"><a href="/note/react/" class="nav-link">《React》</a></li><li class="dropdown-subitem"><a href="/note/typescript-axios/" class="nav-link">《TypeScript 从零实现 axios》</a></li><li class="dropdown-subitem"><a href="/note/git/" class="nav-link">《Git》</a></li><li class="dropdown-subitem"><a href="/pages/51afd6/" class="nav-link">《TypeScript》</a></li><li class="dropdown-subitem"><a href="/pages/4643cd/" class="nav-link">《JS设计模式总结》</a></li><li class="dropdown-subitem"><a href="/note/uniapp/" class="nav-link">《uniapp》</a></li><li class="dropdown-subitem"><a href="/note/vue3/" class="nav-link">《vue3》</a></li><li class="dropdown-subitem"><a href="/note/nestjs/" class="nav-link">《nestjs》</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="页面" class="dropdown-title"><a href="/ui/" class="link-title">页面</a> <span class="title" style="display:none;">页面</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/8309a5b876fc95e3/" class="nav-link">HTML</a></li><li class="dropdown-item"><!----> <a href="/pages/0a83b083bdf257cb/" class="nav-link">CSS</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术" class="dropdown-title"><a href="/technology/" class="link-title">技术</a> <span class="title" style="display:none;">技术</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/9a7ee40fc232253e/" class="nav-link">技术文档</a></li><li class="dropdown-item"><!----> <a href="/pages/4c778760be26d8b3/" class="nav-link">GitHub技巧</a></li><li class="dropdown-item"><!----> <a href="/pages/117708e0af7f0bd9/" class="nav-link">Nodejs</a></li><li class="dropdown-item"><!----> <a href="/pages/41f87d890d0a02af/" class="nav-link">博客搭建</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多" class="dropdown-title"><a href="/more/" class="link-title">更多</a> <span class="title" style="display:none;">更多</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/f2a556/" class="nav-link">学习</a></li><li class="dropdown-item"><!----> <a href="/pages/aea6571b7a8bae86/" class="nav-link">面试</a></li><li class="dropdown-item"><!----> <a href="/pages/2d615df9a36a98ed/" class="nav-link">心情杂货</a></li><li class="dropdown-item"><!----> <a href="/pages/baaa02/" class="nav-link">实用技巧</a></li><li class="dropdown-item"><!----> <a href="/friends/" class="nav-link">友情链接</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">关于</a></div><div class="nav-item"><a href="/pages/beb6c0bd8a66cea6/" class="nav-link">收藏</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <a href="https://github.com/781288772/vuepressBlog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>JavaScript文章</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/pages/8143cc480faf9a11/" class="sidebar-link">new命令原理</a></li><li><a href="/pages/b1af5cb8996363c5/" class="sidebar-link">ES5面向对象</a></li><li><a href="/pages/1f4123be6f45abcd/" class="sidebar-link">ES6面向对象</a></li><li><a href="/pages/e808fba1fa8fbab2/" class="sidebar-link">多种数组去重性能对比</a></li><li><a href="/pages/40b4db2d38ba85f2/" class="sidebar-link">JS随机打乱数组</a></li><li><a href="/pages/40f623be692cf8bc/" class="sidebar-link">判断是否为移动端浏览器</a></li><li><a href="/pages/f1acb712033ac8da/" class="sidebar-link">将一维数组按指定长度转为二维数组</a></li><li><a href="/pages/0f6a0ac99b62ede5/" class="sidebar-link">防抖与节流函数</a></li><li><a href="/pages/7a91be2d502346ce/" class="sidebar-link">JS获取和修改url参数</a></li><li><a href="/pages/fd4a16d56b83c1bc/" class="sidebar-link">比typeof运算符更准确的类型判断</a></li><li><a href="/pages/912823/" class="sidebar-link">时间戳转日期格式</a></li><li><a href="/pages/acb41d/" class="sidebar-link">2021 年 JavaScript 大事记</a></li><li><a href="/pages/4c81f9/" class="sidebar-link">如何处理支付宝支付后端返回的html代码</a></li><li><a href="/pages/af7224/" class="sidebar-link">2021 JavaScript Rising Stars</a></li><li><a href="/pages/8818f3/" class="sidebar-link">vue下载流文件</a></li><li><a href="/pages/284702/" class="sidebar-link">如果你还不会用 git 回滚代码，那你一定要来看看</a></li><li><a href="/pages/8d7bf2/" class="sidebar-link">element ui 表单循环表单验证</a></li><li><a href="/pages/094888/" class="sidebar-link">new操作符具体干了什么？</a></li><li><a href="/pages/a10cda/" class="sidebar-link">5个 VueUse 库函数，让你工作效率翻倍</a></li><li><a href="/pages/033b93/" class="sidebar-link">六千字详解！讲透 Vue3 响应式是如何实现的</a></li><li><a href="/pages/ac58c3/" class="sidebar-link">2022 前端技术领域这些新变化，你准备好了吗？</a></li><li><a href="/pages/58191a/" class="sidebar-link">Vue 3 将成为新的默认版本</a></li><li><a href="/pages/2b41cf/" class="sidebar-link">前端鉴权的兄弟们：cookie、session、token、jwt、单点登录</a></li><li><a href="/pages/79ee83/" class="sidebar-link">分享 12 个解决日常工作问题的JS 代码片段</a></li><li><a href="/pages/6e54f9/" class="sidebar-link">来聊聊Vue中使用Render函数和JSX</a></li><li><a href="/pages/793bd4/" class="sidebar-link">Vue新一代状态管理工具Pinia上手指南</a></li><li><a href="/pages/1418a0/" class="sidebar-link">聊一聊目前 Web 前端开发的一些困局</a></li><li><a href="/pages/c0a409/" class="sidebar-link">即将到来的 ECMAScript 2022 新特性</a></li><li><a href="/pages/0be87d/" class="sidebar-link">10个常用的JS工具库</a></li><li><a href="/pages/5ce80d/" class="sidebar-link">Promise、Generator、async有什么区别？</a></li><li><a href="/pages/be1685/" class="sidebar-link">20条示例代码让你的代码更简洁</a></li><li><a href="/pages/8b20c9/" class="sidebar-link">Vue3的七种组件通信方式</a></li><li><a href="/pages/fa985d/" class="sidebar-link">2022前端技术领域会有哪些新的变化</a></li><li><a href="/pages/74f43c/" class="sidebar-link">7个高频正则表达式</a></li><li><a href="/pages/7fa683/" class="sidebar-link">JS【数组合并】的性能差异对比</a></li><li><a href="/pages/4fdfb3/" class="sidebar-link">浅拷贝与深拷贝</a></li><li><a href="/pages/3b8951/" class="sidebar-link">新特性CSS@layer</a></li><li><a href="/pages/d8019c/" class="sidebar-link">10 个“哇塞”的 Web 资源</a></li><li><a href="/pages/ab8ea4/" class="sidebar-link">vue技巧</a></li><li><a href="/pages/aa1211/" class="sidebar-link">为什么说移动端该放弃rem适配方案了？</a></li><li><a href="/pages/18c294/" aria-current="page" class="active sidebar-link">Promise 原理</a></li><li><a href="/pages/0fe84f/" class="sidebar-link">前端性能优化之图像处理</a></li><li><a href="/pages/d1f23e/" class="sidebar-link">不要再直接写undefined了</a></li><li><a href="/pages/cd0fad/" class="sidebar-link">Vuex 的小技巧</a></li><li><a href="/pages/76437a/" class="sidebar-link">初识 node 框架 Nestjs</a></li><li><a href="/pages/ad94a8/" class="sidebar-link">同步与异步</a></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>三级目录</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>学习笔记</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-70a2d273><div class="articleInfo" data-v-70a2d273><ul class="breadcrumbs" data-v-70a2d273><li data-v-70a2d273><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-70a2d273></a></li> <li data-v-70a2d273><a href="/web" title="前端-目录页" data-v-70a2d273>前端</a></li> <li data-v-70a2d273><a href="/web/#JavaScript文章" title="前端#JavaScript文章" data-v-70a2d273>JavaScript文章</a></li> <!----></ul> <div class="info" data-v-70a2d273><div title="作者" class="author iconfont icon-touxiang" data-v-70a2d273><a href="https://github.com/781288772" target="_blank" title="作者" class="beLink" data-v-70a2d273>Christin</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-70a2d273><a href="javascript:;" data-v-70a2d273>2022-06-25</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><!----> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABKFJREFUSA3tVl1oFVcQnrMbrak3QUgkya1akpJYcrUtIqW1JvFBE9LiQ5v6JmJpolbMg32rVrhgoYK0QiMY6i9Y6EMaW5D+xFJaTYItIuK2Kr3+BJNwkxBj05sQY3b3nM6cs2dv9t7NT/vQJw/sndk5M/PNzJkzewGerP+pAmy+ON8lLzUJgA8ZYxYIYZmGYRnctDaWvJJAmTtfP1pvXsBCCPP8QFcCaRkZYACgDZFO4stNIcBCajEOlmmC9XpJ9bAGCaPaPmzPl32dvLSVu3BWCTQs0XQQ6g0DYgwLIoAZbBCdW/i+781o1VVlm/410mw4h06Y7bIPHNyWDyL4FHkX03Q8SrzNhZTZriieckWt7cL6MM85YcLpsi/7O9/iXFT6MswI0DmmpkSaJ0qLxFIm3+i1THHB3zmBH3PYx9CcykcLOeQVVa7QtdxTgQgEleX2AjHYfwA+2ddV77ruGoJUbhGDI09YSNXyMpUt5ylOzxgbUmtOp7NmbNt8v3arjTBfYELmLUV+M+nSawNNAUqpT3ClJWg5I3BLT+cGW/DXNGCa6tx1aakCGEigArTn4TDIPdrXXYKCZNrHLMCOEPvHBlLQ99s9eHB7EB6NTki73CVPQ2F5MSx/uRQixfmq7rK0wYD8w8E905bnPDfwoWs/rfv93NWN/ZfvwsLIU7A09gxECyISeGJkHAau98L97tuw7NXnoPyNF8FcYGLGKsOs0mN3OEyec9esGW/ZEl945dTP34wlR2FZVQWU1q0Cw8Tr7p+hgLLNL0FPxx/Q35mA8aEUrH6nCgwEl0tn7wUiZYJnNRh6DK4UH/k0lfyrsBKdPVv/AriGIQcEDQZ65LBAGe2Rzui9Ybjz7XUppz1/uKBbyVPGkN3ZAeC6hr0x7Nr38N5+EqkoOm17xpoqR9ohQF55ERSvr4Dkr3chNfC3DMzGJlNBElW8w9nsGQvhNGIzDkXzCg8cLK951xHsFBlTJspJNi3ZFIMF2AeDV3q8DNOB+YHi6QTrChDIWDBRi5U5f+ZMfJLu3ccrqxtdxk4SKH336LFxSmkqefwU5T8fhdSdQf9IVKD6aNiwI/hnmcAZ91isYMJIaCUCx9W098+LgruikeTqzqqxKPUwqJyCPJiyemVVZBOijDGjD38Os0jOiSPL1z3SPjXNANbiNPXAdzTfukjjuknNBbyz3nwgTd3AVFqUJ5hpHlq9MveLnWwttUfoygBmvVjuikxND3znrhsELnZk7k+OjIGxeNEkomyLVta0xxn+HZhjBc4YZ/AFjHjz9u3xRZl2BN4aq9nFwWh16IrQ1aHHEd3j1+4/dB9OtH4e29A2H1DyHQRmOSfQZ1Fy7MHBTGB6J/Djq6p3OxyO2cB+4Car7v/o3GXgfAkj23+x9ID1Teoamo/SXcbvSf2PX7Vc8DdCmE1vN9di+32P9/5YR3vLnhCVGUWBjEkr3yh4H8v9CzmsbdhzOKzsJKM90iFdaTMjRPhGVsakRvOaRidljo6H6G7j+ctrJpsP+4COhDIl0La2+FS4+5mlocBaXY5QnGZysIBYoeSsl5qQzrSj/cgNrfuEzlWBfwA+EjrZyWUvpAAAAABJRU5ErkJggg==">
+          Promise 原理
+        </h1> <!----> <div class="theme-vdoing-content content__default"><p>new Promise</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const promise = new Promise((resolve, reject) =&gt; { // 执行器
+  // 异步操作代码...
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>Promise 作为一个构造函数，通过 new 操作符可创建一个 promise 实例</p> <p>该构造函数接收一个函数作为参数，这个函数我们通常称为执行器（executor）函数</p> <p>执行器函数接收两个参数：这两个参数作为函数可调用并可以传入相应数据，通常我们以resolve和reject进行命名</p> <p>创建 Promise 类</p> <p>根据上述示例与描述，现在可以先构造一个初步的 Promise 类</p> <ul><li>Promise 具备三种状态：pending、fulfilled（有时候也称为 resolved ）、rejected。</li> <li>构造器内定义 executor，接收实例传过来的执行器函数</li> <li>初始状态为 pending。</li> <li>初始 value （终值）， 它是任何一个合法的 JavaScript 值。</li> <li>初始 reason (拒因)</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>/ 定义 Promise 的三种状态
+const PENDING = 'pending'
+const FULFILLED = 'fulfilled'
+const REJECTED = 'rejected'
+
+// 定义 MyPromise 类
+class MyPromise { 
+  constructor(executor) {
+    // 初始状态为 pending
+    this.status = PENDING
+    
+    // 初始 value 与 reason
+    this.value = undefined
+    this.reason = undefined
+  }
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p>resolve 与 reject</p> <p>回顾一下调用这两个函数的作用</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const promise = new Promise((resolve, reject) =&gt; {
+    // 异步操作代码
+  setTimeout(() =&gt; {
+    const rand = Math.random() * 100
+    if (rand &gt;= 50) {
+        // 成功时执行
+      resolve('success')
+    } else {
+        // 失败时执行
+      reject('error')
+    }
+  }, 1000)
+})
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>resolve函数：将 promise 实例的状态从 pending 变为 fulfilled，在异步操作成功时调用，并将异步操作的结果，作为参数进行传递</p> <p>reject函数： 将 promise 实例的状态从 pending 变为 rejected，在异步操作失败时调用，并将异步操作报出的错误，作为参数进行传递</p> <p>MyPromise 类中，我们定义 resolve 函数 和 reject 函数，并在函数体内进行 status、value 或 reason的更新，同时调用 executor 执行器，传入 resolve 和 reject</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// ...
+class MyPromise {
+  constructor(executor) {
+    this.status = PENDING
+    this.value = undefined
+    this.reason = undefined
+    
+    // 定义 resolve
+    const resolve = value =&gt; {
+      // 更新状态
+      this.status = FULFILLED
+      // 更新 value
+      this.value = value
+    }
+    // 定义 reject
+    const reject = reason =&gt; {
+      // 更新状态
+      this.status = REJECTED
+      // 更新 reason
+      this.reason = reason
+    }
+    // 调用执行器，将 resolve 与 reject 作为参数传递出去
+    executor(resolve, reject)
+  }
+}
+    
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><p>测试</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token comment">// 通过 MyPromise 生成 p1 实例， 执行 resolve 并传递 success 参数</span>
+<span class="token keyword">const</span> p1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyPromise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'success'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>p1<span class="token punctuation">)</span> <span class="token comment">// MyPromise {status: 'fulfilled', value: 'success', reason: undefined}</span>
+
+<span class="token comment">// 通过 MyPromise 生成 p2 实例， 执行 reject 并传递 error 参数</span>
+<span class="token keyword">const</span> p2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyPromise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token function">reject</span><span class="token punctuation">(</span><span class="token string">'error'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>p2<span class="token punctuation">)</span> <span class="token comment">// MyPromise {status: 'rejected', value: undefined, reason: 'error'}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>状态不可逆</p> <p>根据规范可知，Promise 必须处于 pending、fulfilled、rejected 三种状态之一，而状态一旦发生改变，则该状态就是落定了，不可逆的，将来都不再会发生改变</p> <p>测试此前写的代码</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token keyword">const</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyPromise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 依次执行 resolve 和 reject</span>
+  <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'success'</span><span class="token punctuation">)</span>
+  <span class="token function">reject</span><span class="token punctuation">(</span><span class="token string">'error'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token comment">// MyPromise {status: 'rejected', value: 'success', reason: 'error'}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>很显然，状态从 pending 过渡到 fulfilled，再从 fulfilled 过渡到 rejected，同时导致 value 和 reason 都有值，这并不符合我们的规范</p> <p>状态落定</p> <p>MyPromise 类中，通过添加判断，实现最终的状态落定，即如果状态发生改变，便永不可逆</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>
+<span class="token comment">// ...</span>
+<span class="token keyword">class</span> <span class="token class-name">MyPromise</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">executor</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">=</span> <span class="token constant">PENDING</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token keyword">undefined</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>reason <span class="token operator">=</span> <span class="token keyword">undefined</span>
+
+    <span class="token keyword">const</span> <span class="token function-variable function">resolve</span> <span class="token operator">=</span> <span class="token parameter">value</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 添加判断</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token constant">PENDING</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">=</span> <span class="token constant">FULFILLED</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> value
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">const</span> <span class="token function-variable function">reject</span> <span class="token operator">=</span> <span class="token parameter">reason</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 添加判断</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token constant">PENDING</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">=</span> <span class="token constant">REJECTED</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>reason <span class="token operator">=</span> reason
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">executor</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><p>状态已经落定</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token keyword">const</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyPromise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'success'</span><span class="token punctuation">)</span>
+  <span class="token function">reject</span><span class="token punctuation">(</span><span class="token string">'error'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token comment">// MyPromise {status: 'fulfilled', value: 'success', reason: undefined}</span>
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>上面的结果显示，状态改变后，便不会再改变了</p> <p>抛出异常</p> <p>除了通过调用 resolve、reject 可以改变状态，执行器内抛出异常，也是可以将pending 状态变为 rejected</p> <p>执行器（executor）函数内改变状态的几种方式</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token operator">/</span> 初始状态
+<span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">// pending 最初状态</span>
+
+<span class="token comment">// 执行 resolve</span>
+<span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// fulfilled 已成功状态</span>
+
+<span class="token comment">// 执行 reject</span>
+<span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">reject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// rejected 已失败状态</span>
+
+<span class="token comment">// 抛出异常</span>
+<span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'error'</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">// rejected 已失败状态</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>MyPromise 类中，我们通过 try catch 进行捕获，如果捕获到错误就调用 reject</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+lass MyPromise {
+  constructor(executor) {
+    // ...
+    try {
+      executor(resolve, reject)
+    } catch (error) {
+      reject(error)
+    }
+  }
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>测试</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token keyword">const</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyPromise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">throw</span> <span class="token string">'error'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token comment">// MyPromise {status: 'rejected', value: undefined, reason: 'error'}</span>
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>小结</p> <p>我们创建了一个初步的 Promise 类，定义了三种状态，并初始化 status、value、reason。定义 resolve 和 reject 更新status、value、reason，并在这两个函数体内添加判断最终落定状态，通过调用执行器（executor）将这两个函数作为参数进行传递。使用 try catch 进行错误的捕获，从而在执行器（executor）函数体内抛出异常时可将 promise 实例状态 变为 rejected</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const PENDING = 'pending'
+const FULFILLED = 'fulfilled'
+const REJECTED = 'rejected'
+
+class MyPromise {
+  constructor(executor) {
+    this.status = PENDING
+    this.value = undefined
+    this.reason = undefined
+
+    const resolve = value =&gt; {
+      if (this.status === PENDING) {
+        this.status = FULFILLED
+        this.value = value
+      }
+    }
+    const reject = reason =&gt; {
+      if (this.status === PENDING) {
+        this.status = REJECTED
+        this.reason = reason
+      }
+    }
+    try {
+      executor(resolve, reject)
+    } catch (error) {
+      reject(error)
+    }
+  }
+}
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br></div></div><p>Promise.prototype.then</p> <p>根据规范可知，Promise 必须提供一个 then 方法以访问值（value、reason）</p> <p>回顾一下 then 方法的使用</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 定义 promise1 实例，执行器内直接调用 resolve
+const promise1 = new Promise((resolve, reject) =&gt; {
+resolve('success')
+})
+
+// 调用 promise1 的 then 方法
+promise1.then(value =&gt; {console.log(value)})
+
+// 定义 promise2 实例，执行器内异步操作在一秒钟之后随机调用 resolve 或 reject
+const promise2 = new Promise((resolve, reject) =&gt; {
+setTimeout(() =&gt; {
+const rand = Math.random() * 100
+if (rand &gt;= 50) {
+resolve('success')
+} else {
+reject('error')
+}
+}, 1000)
+})
+// 调用 promise2 的 then 方法
+promise2.then(value =&gt; {console.log(value)}, error =&gt; {console.log(error)})
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><p>关于参数</p> <p>promise.then(onFulfilled, onRejected)
+then 方法接收两个可选参数（onFulfilled 处理程序，onRejected 处理程序）</p> <ul><li>提供第一个参数 onFulfilled 处理程序：fulfilled状态的回调函数</li> <li>提供第二个参数 onRejected 处理程序：rejected状态的回调函数</li></ul> <p>根据规范可知，若 onFulfilled、 onRejected 不是函数，则必须忽略它们，所谓忽略，我们可以通过手动赋值一个函数，帮助其返回对应的 value 或 reason</p> <p>MyPromise 类中，我们定义一个 then 方法</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// ...
+class MyPromise {
+  constructor(executor) { ... }
+  
+  // 定义 then 方法
+  then(onFulfilled, onRejected) {
+    // 判断 onFulfilled 是否为函数，若不是函数，便赋值一个函数，然后返回 value
+    onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : value =&gt; value
+    
+    // 判断 onRejected 是否为函数，若不是函数，则赋值一个函数，然后 throw reason
+    onRejected = typeof onRejected === 'function' ? onRejected : reason =&gt; { throw reason }
+    
+    // 判断当前状态是否为 fulfilled，执行 onFulfilled
+    if(this.status === FULFILLED) onFulfilled(this.value)
+    
+    // 判断当前状态是否为 rejected，执行 onRejected
+    if(this.status === REJECTED) onRejected(this.reason)
+  }
+}
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><p>测试</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 定义 promise1 实例，执行器内直接调用 resolve
+const promise1 = new MyPromise((resolve, reject) =&gt; {
+  resolve('success')
+})
+promise1.then(value =&gt; {console.log(value)}) // success
+
+// 定义 promise1 实例，执行器内异步操作一秒钟之后调用 resolve
+const promise2 = new MyPromise((resolve, reject) =&gt; {
+  setTimeout(() =&gt; {
+    resolve('success')
+  }, 1000)
+})
+promise2.then(value =&gt; {console.log(value)}) // 什么都没打印
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>在上面代码中，执行器内同步调用 resolve，then 方法中的处理程序是正常输出的，但是执行器内异步操作调用 resolve，then 方法中的处理程序是未能正常输出的，这是什么原因呢？</p> <p>关于异步操作</p> <p>关于异步操作</p> <p>出现上诉问题是因为，执行器函数体内异步操作时，promise 的状态当时还处于初始状态 pending</p> <p>下面打印一下顺序</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// ...
+class MyPromise {
+  constructor(executor) {
+    // ...
+    const resolve = value =&gt; {
+      if (this.status === PENDING) {
+        console.log('状态改变') // 3 状态改变
+        this.status = FULFILLED
+        this.value = value
+      }
+    }
+    // ...
+  }
+  then(onFulfilled, onRejected) {
+    console.log('执行then') // 1 执行then
+    // ...
+}
+const promise2 = new MyPromise((resolve, reject) =&gt; {
+  setTimeout(() =&gt; {
+    console.log('定时器内部操作') // 2 定时器内部操作
+    resolve('success')
+  }, 1000)
+})
+promise2.then(value =&gt; {console.log(value)}) // success
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div></div><p>根据上面的打印输出可以知道顺序 1 执行 then &gt; 2 定时器内部操作 &gt; 3 状态改变，执行 then 时，而状态没有发生改变，根本不会执行 onFulfilled 或 onRejected。如何解决该问题呢</p> <p>1.then 方法中判断初始状态，并且因为同一个实例，then 方法是可以被调用多次的，所以我们应该定义两个数组分别存储 onFulfilled、onRejected，将来可以依次调用</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// ...
+then(onFulfilled, onRejected) {
+    onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : value =&gt; value
+    onRejected = typeof onRejected === 'function' ? onRejected : reason =&gt; { throw reason }
+    
+    if(this.status === FULFILLED) onFulfilled(this.value)
+    if(this.status === REJECTED) onRejected(this.reason)
+    
+    // 添加多一个判断
+    // 如果当前状态为 pending，则将 onFulfilled 和 onRejected 分别存储到 this.onFulfilledCallbacks 和 this.onRejectedCallbacks 数组中
+    if (this.status === PENDING) {
+      this.onFulfilledCallbacks.push(onFulfilled.bind(this))
+      this.onRejectedCallbacks.push(onRejected.bind(this))
+    }
+  }  
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p>2.resolve 和 reject 依次执行对应的处理程序</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// ...
+
+// 存储 onFulfilled 和 onRejected 的回调函数数组
+this.onFulfilledCallbacks = []
+this.onRejectedCallbacks = []
+
+const resolve = value =&gt; {
+  if (this.status === PENDING) {
+    this.status = FULFILLED
+    this.value = value
+    
+    // 依次执行 onFulfilledCallbacks 数组中的回调函数
+    this.onFulfilledCallbacks.forEach(callback =&gt; callback(value))
+  }
+}
+const reject = reason =&gt; {
+  if (this.status === PENDING) {
+    this.status = REJECTED
+    this.reason = reason
+    
+    // 依次执行 onRejectedCallbacks 数组中的回调函数
+    this.onRejectedCallbacks.forEach(callback =&gt; callback(reason))
+  }
+}
+// ...
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><p>then 方法中，当状态为 fulfilled 或 rejected 的时候，直接执行对应的处理程序。 当处于初始状态 pending 的时候，我们将 onFulfilled 和 onRejected 分别存储到对应的 this.onFulfilledCallbacks 和 this.onRejectedCallbacks 回调数组中，然后在 resolve 和 reject 中依次执行对应回调数组中的回调函数</p> <p>测试</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const promise1 = new MyPromise((resolve, reject) =&gt; {
+  resolve('success')
+})
+promise1.then(value =&gt; {console.log(value)}) // success
+
+const promise2 = new MyPromise((resolve, reject) =&gt; {
+  setTimeout(() =&gt; {
+    resolve('success')
+  }, 1000)
+})
+promise2.then(value =&gt; {console.log(value)}) // success
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>关于返回值</p> <p>promise2 = promise1.then(onFulfilled, onRejected)</p> <ul><li>如果其中一个onFulfilled或onRejected返回一个值x，则运行 promise 解决程序。</li> <li>如果其中一个onFulfilled或onRejected抛出异常e，则promise2必须以拒绝e为理由</li> <li>如果onFulfilled不是一个函数并且promise1被满足，则promise2必须以与 相同的值来满足promise1</li> <li>如果onRejected不是函数并且promise1被拒绝，则promise2必须以与 相同的原因被拒绝promise1</li></ul> <p>根据规范可知，then 方法必须返回一个新的 promise，这也是为什么可以进行链式调用，下面我们根据步骤改造 then 方法</p> <p>1.每个判断中，我们都返回一个新的 promise
+2.新 promise 执行器内我们都通过 try catch 进行异常捕获，如果捕获到异常，则拒绝 promise 并返回拒因
+3.若处理程序（onFulfilled, onRejected）非函数， fulfilled状态中返回终值，rejected状态中则返回拒因
+4.若处理程序（onFulfilled, onRejected）是一个函数，返回 x 值，执行 _Resolve（promise 解决程序） （_Resolve 在第二部分代码中）
+5.当状态是 pending 的时候，this.onRejectedCallbacks 和 this.onFulfilledCallbacks 回调数组，存储一个个匿名函数，函数体内部执行上述 2, 3, 4 操作</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+then(onFulfilled, onRejected) {
+  if (this.status === FULFILLED) {
+    const promise2 = new MyPromise((resolve, reject) =&gt; {
+      try {
+        if (typeof onFulfilled !== 'function') {
+          resolve(this.value)
+        } else {
+          const x = onFulfilled(this.value)
+          _Resolve(promise2, x, resolve, reject)
+        }
+      } catch (error) {
+        reject(error)
+      }
+    })
+    return promise2
+  }
+  if (this.status === REJECTED) {
+    const promise2 = new MyPromise((resolve, reject) =&gt; {
+      try {
+        if (typeof onRejected !== 'function') {
+          reject(this.reason)
+        } else {
+          const x = onRejected(this.reason)
+          _Resolve(promise2, x, resolve, reject)
+        }
+      } catch (error) {
+        reject(error)
+      }
+    })
+    return promise2
+  }
+  if (this.status === PENDING) {
+    const promise2 = new MyPromise((resolve, reject) =&gt; {
+      this.onFulfilledCallbacks.push(() =&gt; {
+        try {
+          if (typeof onFulfilled !== 'function') {
+            resolve(this.value)
+          } else {
+            const x = onFulfilled(this.value)
+            _Resolve(promise2, x, resolve, reject)
+          }
+        } catch (error) {
+          reject(error)
+        }
+      })
+      this.onRejectedCallbacks.push(() =&gt; {
+        try {
+          if (typeof onRejected !== 'function') {
+            reject(this.reason)
+          } else {
+            const x = onRejected(this.reason)
+            _Resolve(promise2, x, resolve, reject)
+          }
+        } catch (error) {
+          reject(error)
+        }
+      })
+    })
+    return promise2
+  }
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br></div></div></div></div> <!----> <div class="page-edit"><div class="edit-link"><a href="https://github.com/781288772/vuepressBlog/edit/master/docs/01.前端/25.JavaScript文章/133.Promise 原理.md" target="_blank" rel="noopener noreferrer">编辑</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2022/06/29, 23:31:33</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/aa1211/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">为什么说移动端该放弃rem适配方案了？</div></a> <a href="/pages/0fe84f/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">前端性能优化之图像处理</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/aa1211/" class="prev">为什么说移动端该放弃rem适配方案了？</a></span> <span class="next"><a href="/pages/0fe84f/">前端性能优化之图像处理</a>→
+      </span></p></div></div></div> <div class="article-list"><div class="article-title"><a href="/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/pages/ad94a8/"><div>同步与异步</div></a> <span>08-22</span></dt></dl><dl><dd>02</dd> <dt><a href="/pages/18c0cb/"><div>request</div></a> <span>06-30</span></dt></dl><dl><dd>03</dd> <dt><a href="/pages/4b021f/"><div>路由</div></a> <span>06-29</span></dt></dl> <dl><dd></dd> <dt><a href="/archives/" class="more">更多文章&gt;</a></dt></dl></div></div></main></div> <div class="footer"><div class="icons"><a href="mailto:781288772@qq.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/781288772" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="https://music.163.com/#/playlist?id=755597173" title="听音乐" target="_blank" class="iconfont icon-erji"></a></div> 
+  Theme by
+  <a href="https://github.com/781288772/vuepressBlog" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2020-2022
+    <span><a href="https://beian.miit.gov.cn" target="_blank">粤ICP备2021157978号</a>|Christina Chen | <a href="https://github.com/781288772/vuepressBlog/blob/master/LICENSE" target="_blank">MIT License</a></span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <div class="body-bg" style="background:url() center center / cover no-repeat;opacity:0.5;"></div> <!----> <!----></div><div class="global-ui"><div></div></div></div>
+    <script src="/assets/js/app.d12d594d.js" defer></script><script src="/assets/js/2.46fb657d.js" defer></script><script src="/assets/js/3.c8a76ed4.js" defer></script><script src="/assets/js/48.a80dcaa4.js" defer></script>
+  </body>
+</html>
