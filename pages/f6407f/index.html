@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>玩转数组高级技法 | Christina&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.8.0">
+    <link rel="icon" href="/img/favicon.ico">
+    <script data-ad-client="ca-pub-7828333725993554" async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <meta name="description" content="web前端技术博客,简洁至上,专注web前端学习与总结。JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github等技术文章。">
+    <meta name="keywords" content="前端博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,markdown">
+    <meta name="baidu-site-verification" content="7F55weZDDc">
+    <meta name="theme-color" content="#11a8cd">
+    <link rel="preload" href="/assets/css/0.styles.b8c18fa1.css" as="style"><link rel="preload" href="/assets/js/app.2fa13717.js" as="script"><link rel="preload" href="/assets/js/2.2056064e.js" as="script"><link rel="preload" href="/assets/js/3.62209b00.js" as="script"><link rel="preload" href="/assets/js/54.b16d82fa.js" as="script"><link rel="prefetch" href="/assets/js/10.f27bcce8.js"><link rel="prefetch" href="/assets/js/100.cf5e0ad3.js"><link rel="prefetch" href="/assets/js/101.154e23aa.js"><link rel="prefetch" href="/assets/js/102.23b0a84e.js"><link rel="prefetch" href="/assets/js/103.993fdbab.js"><link rel="prefetch" href="/assets/js/104.99758292.js"><link rel="prefetch" href="/assets/js/105.cc7a5277.js"><link rel="prefetch" href="/assets/js/106.8c390f4b.js"><link rel="prefetch" href="/assets/js/107.166837fd.js"><link rel="prefetch" href="/assets/js/108.7dd56408.js"><link rel="prefetch" href="/assets/js/109.4b0e10a7.js"><link rel="prefetch" href="/assets/js/11.270e1500.js"><link rel="prefetch" href="/assets/js/110.e15cf166.js"><link rel="prefetch" href="/assets/js/111.6ab13df4.js"><link rel="prefetch" href="/assets/js/112.8a381992.js"><link rel="prefetch" href="/assets/js/113.b350c5f0.js"><link rel="prefetch" href="/assets/js/114.c628117c.js"><link rel="prefetch" href="/assets/js/115.8ba61131.js"><link rel="prefetch" href="/assets/js/116.1233ac9e.js"><link rel="prefetch" href="/assets/js/117.d03305fc.js"><link rel="prefetch" href="/assets/js/118.7d4000c4.js"><link rel="prefetch" href="/assets/js/119.de8135cb.js"><link rel="prefetch" href="/assets/js/12.63430f5d.js"><link rel="prefetch" href="/assets/js/120.442ca230.js"><link rel="prefetch" href="/assets/js/121.116c6bc4.js"><link rel="prefetch" href="/assets/js/122.4e98a050.js"><link rel="prefetch" href="/assets/js/123.4a3a461d.js"><link rel="prefetch" href="/assets/js/124.1f06629a.js"><link rel="prefetch" href="/assets/js/125.364173ef.js"><link rel="prefetch" href="/assets/js/126.e665c7a4.js"><link rel="prefetch" href="/assets/js/127.18be1299.js"><link rel="prefetch" href="/assets/js/128.fc24b041.js"><link rel="prefetch" href="/assets/js/129.eab2f92f.js"><link rel="prefetch" href="/assets/js/13.3e98eee1.js"><link rel="prefetch" href="/assets/js/130.dceebae0.js"><link rel="prefetch" href="/assets/js/131.f5cdde9b.js"><link rel="prefetch" href="/assets/js/132.2ef16c4b.js"><link rel="prefetch" href="/assets/js/133.d5e9bf81.js"><link rel="prefetch" href="/assets/js/134.2ba59b09.js"><link rel="prefetch" href="/assets/js/135.1b2bd11b.js"><link rel="prefetch" href="/assets/js/136.cd31a980.js"><link rel="prefetch" href="/assets/js/137.4537ee2a.js"><link rel="prefetch" href="/assets/js/138.8bf43b2c.js"><link rel="prefetch" href="/assets/js/139.40fdd19a.js"><link rel="prefetch" href="/assets/js/14.ff80910f.js"><link rel="prefetch" href="/assets/js/140.d2b55666.js"><link rel="prefetch" href="/assets/js/141.74ce2050.js"><link rel="prefetch" href="/assets/js/142.4afee781.js"><link rel="prefetch" href="/assets/js/143.3a93b789.js"><link rel="prefetch" href="/assets/js/144.a799e5dc.js"><link rel="prefetch" href="/assets/js/145.c4e39faf.js"><link rel="prefetch" href="/assets/js/146.94a76302.js"><link rel="prefetch" href="/assets/js/147.2df16122.js"><link rel="prefetch" href="/assets/js/148.c9f5b4eb.js"><link rel="prefetch" href="/assets/js/149.6b07f23f.js"><link rel="prefetch" href="/assets/js/15.716bde25.js"><link rel="prefetch" href="/assets/js/150.cce26b5b.js"><link rel="prefetch" href="/assets/js/151.4a1412ac.js"><link rel="prefetch" href="/assets/js/152.6f01b4e0.js"><link rel="prefetch" href="/assets/js/153.91afb7ab.js"><link rel="prefetch" href="/assets/js/154.d1c6111b.js"><link rel="prefetch" href="/assets/js/155.299db46c.js"><link rel="prefetch" href="/assets/js/156.bb3f9b22.js"><link rel="prefetch" href="/assets/js/157.3ff7d551.js"><link rel="prefetch" href="/assets/js/158.901fa250.js"><link rel="prefetch" href="/assets/js/159.376b6bac.js"><link rel="prefetch" href="/assets/js/16.99c9dae9.js"><link rel="prefetch" href="/assets/js/160.b50f33e6.js"><link rel="prefetch" href="/assets/js/161.d459acef.js"><link rel="prefetch" href="/assets/js/162.79c26ad0.js"><link rel="prefetch" href="/assets/js/163.d8df1a08.js"><link rel="prefetch" href="/assets/js/164.0f23787b.js"><link rel="prefetch" href="/assets/js/165.8981688c.js"><link rel="prefetch" href="/assets/js/166.9d9175e6.js"><link rel="prefetch" href="/assets/js/167.3063e1bc.js"><link rel="prefetch" href="/assets/js/168.a28cd520.js"><link rel="prefetch" href="/assets/js/169.f244e96f.js"><link rel="prefetch" href="/assets/js/17.b90a7548.js"><link rel="prefetch" href="/assets/js/170.de0979fc.js"><link rel="prefetch" href="/assets/js/171.8087f38a.js"><link rel="prefetch" href="/assets/js/172.07c90984.js"><link rel="prefetch" href="/assets/js/173.204ec481.js"><link rel="prefetch" href="/assets/js/174.1bbe5426.js"><link rel="prefetch" href="/assets/js/175.333967fc.js"><link rel="prefetch" href="/assets/js/176.b96638cf.js"><link rel="prefetch" href="/assets/js/177.690be9ee.js"><link rel="prefetch" href="/assets/js/178.18397e70.js"><link rel="prefetch" href="/assets/js/179.4663cbdb.js"><link rel="prefetch" href="/assets/js/18.6506f8fe.js"><link rel="prefetch" href="/assets/js/180.3dff689a.js"><link rel="prefetch" href="/assets/js/181.5c786cb0.js"><link rel="prefetch" href="/assets/js/182.d51235ce.js"><link rel="prefetch" href="/assets/js/183.d8affec0.js"><link rel="prefetch" href="/assets/js/184.412222e7.js"><link rel="prefetch" href="/assets/js/185.09438c6f.js"><link rel="prefetch" href="/assets/js/186.614fc217.js"><link rel="prefetch" href="/assets/js/187.8c9b3450.js"><link rel="prefetch" href="/assets/js/188.81a5061e.js"><link rel="prefetch" href="/assets/js/189.35c9fedb.js"><link rel="prefetch" href="/assets/js/19.e7006324.js"><link rel="prefetch" href="/assets/js/190.c30f0e50.js"><link rel="prefetch" href="/assets/js/191.1de1e12f.js"><link rel="prefetch" href="/assets/js/192.85ad525d.js"><link rel="prefetch" href="/assets/js/193.15257890.js"><link rel="prefetch" href="/assets/js/194.f66b7683.js"><link rel="prefetch" href="/assets/js/195.f9927c6c.js"><link rel="prefetch" href="/assets/js/196.370a8b0c.js"><link rel="prefetch" href="/assets/js/197.8a68a28e.js"><link rel="prefetch" href="/assets/js/198.a24637db.js"><link rel="prefetch" href="/assets/js/199.89e415f0.js"><link rel="prefetch" href="/assets/js/20.746c672d.js"><link rel="prefetch" href="/assets/js/200.41004e18.js"><link rel="prefetch" href="/assets/js/201.60bb6601.js"><link rel="prefetch" href="/assets/js/202.6408f178.js"><link rel="prefetch" href="/assets/js/203.ae741cbc.js"><link rel="prefetch" href="/assets/js/204.59f3f933.js"><link rel="prefetch" href="/assets/js/205.7e8f622c.js"><link rel="prefetch" href="/assets/js/206.2e911142.js"><link rel="prefetch" href="/assets/js/207.52197405.js"><link rel="prefetch" href="/assets/js/208.be08b48a.js"><link rel="prefetch" href="/assets/js/209.26c6af50.js"><link rel="prefetch" href="/assets/js/21.30f83c03.js"><link rel="prefetch" href="/assets/js/210.d9b6b3f1.js"><link rel="prefetch" href="/assets/js/211.9b3fb8f9.js"><link rel="prefetch" href="/assets/js/212.f9281228.js"><link rel="prefetch" href="/assets/js/213.1765f304.js"><link rel="prefetch" href="/assets/js/214.d7753c4c.js"><link rel="prefetch" href="/assets/js/215.2a2ad048.js"><link rel="prefetch" href="/assets/js/216.34dcba3f.js"><link rel="prefetch" href="/assets/js/217.74597ff5.js"><link rel="prefetch" href="/assets/js/218.54d0d037.js"><link rel="prefetch" href="/assets/js/219.73c3db3b.js"><link rel="prefetch" href="/assets/js/22.02c89d5c.js"><link rel="prefetch" href="/assets/js/220.69ba1b88.js"><link rel="prefetch" href="/assets/js/221.3ff9e02e.js"><link rel="prefetch" href="/assets/js/222.f14a968a.js"><link rel="prefetch" href="/assets/js/223.a8b107e8.js"><link rel="prefetch" href="/assets/js/224.c8d83118.js"><link rel="prefetch" href="/assets/js/225.406b52cc.js"><link rel="prefetch" href="/assets/js/226.c9cbc53b.js"><link rel="prefetch" href="/assets/js/227.250443d7.js"><link rel="prefetch" href="/assets/js/228.108ed9ca.js"><link rel="prefetch" href="/assets/js/229.9d7c5892.js"><link rel="prefetch" href="/assets/js/23.c4ee32de.js"><link rel="prefetch" href="/assets/js/230.0652750e.js"><link rel="prefetch" href="/assets/js/231.979073c7.js"><link rel="prefetch" href="/assets/js/232.de09cfef.js"><link rel="prefetch" href="/assets/js/233.d9d7556f.js"><link rel="prefetch" href="/assets/js/234.00e14644.js"><link rel="prefetch" href="/assets/js/235.1eaf73ec.js"><link rel="prefetch" href="/assets/js/236.3f9af999.js"><link rel="prefetch" href="/assets/js/237.782f4543.js"><link rel="prefetch" href="/assets/js/238.829604d5.js"><link rel="prefetch" href="/assets/js/239.70f430e5.js"><link rel="prefetch" href="/assets/js/24.45b3bdaf.js"><link rel="prefetch" href="/assets/js/240.5def0949.js"><link rel="prefetch" href="/assets/js/241.8eb6c1f0.js"><link rel="prefetch" href="/assets/js/242.25eed060.js"><link rel="prefetch" href="/assets/js/243.d58f52f2.js"><link rel="prefetch" href="/assets/js/244.87d603b7.js"><link rel="prefetch" href="/assets/js/245.506eb0b6.js"><link rel="prefetch" href="/assets/js/246.f6803a51.js"><link rel="prefetch" href="/assets/js/247.fc6c7eef.js"><link rel="prefetch" href="/assets/js/248.afc0580c.js"><link rel="prefetch" href="/assets/js/249.17f51fc7.js"><link rel="prefetch" href="/assets/js/25.8084c677.js"><link rel="prefetch" href="/assets/js/250.41589fdf.js"><link rel="prefetch" href="/assets/js/251.83810c7d.js"><link rel="prefetch" href="/assets/js/252.341a1662.js"><link rel="prefetch" href="/assets/js/253.88772639.js"><link rel="prefetch" href="/assets/js/254.7a6dd26b.js"><link rel="prefetch" href="/assets/js/255.ea4bb47c.js"><link rel="prefetch" href="/assets/js/256.30e0d462.js"><link rel="prefetch" href="/assets/js/257.4158f1d5.js"><link rel="prefetch" href="/assets/js/258.d69b518a.js"><link rel="prefetch" href="/assets/js/259.ea2c662e.js"><link rel="prefetch" href="/assets/js/26.39de4c72.js"><link rel="prefetch" href="/assets/js/260.55c21e85.js"><link rel="prefetch" href="/assets/js/261.db035120.js"><link rel="prefetch" href="/assets/js/262.31fa561c.js"><link rel="prefetch" href="/assets/js/263.025eccbc.js"><link rel="prefetch" href="/assets/js/264.1b15a0c2.js"><link rel="prefetch" href="/assets/js/265.e90b73db.js"><link rel="prefetch" href="/assets/js/266.a66b5cd2.js"><link rel="prefetch" href="/assets/js/267.21f6bb24.js"><link rel="prefetch" href="/assets/js/268.90ad0fd1.js"><link rel="prefetch" href="/assets/js/269.21b9021e.js"><link rel="prefetch" href="/assets/js/27.6792c554.js"><link rel="prefetch" href="/assets/js/270.83ee46fe.js"><link rel="prefetch" href="/assets/js/271.53b7e60c.js"><link rel="prefetch" href="/assets/js/272.2cea01cd.js"><link rel="prefetch" href="/assets/js/273.af69af3b.js"><link rel="prefetch" href="/assets/js/274.71e2bcdd.js"><link rel="prefetch" href="/assets/js/275.be5975e5.js"><link rel="prefetch" href="/assets/js/276.68900824.js"><link rel="prefetch" href="/assets/js/277.ed61fed3.js"><link rel="prefetch" href="/assets/js/278.78d5dea4.js"><link rel="prefetch" href="/assets/js/279.df0cc348.js"><link rel="prefetch" href="/assets/js/28.f8404bab.js"><link rel="prefetch" href="/assets/js/280.d2abdc73.js"><link rel="prefetch" href="/assets/js/281.50f024c1.js"><link rel="prefetch" href="/assets/js/282.7145288a.js"><link rel="prefetch" href="/assets/js/283.a15e6423.js"><link rel="prefetch" href="/assets/js/284.cdb3585b.js"><link rel="prefetch" href="/assets/js/285.6d7d9947.js"><link rel="prefetch" href="/assets/js/286.9c966b12.js"><link rel="prefetch" href="/assets/js/287.3d08ac94.js"><link rel="prefetch" href="/assets/js/288.c0ef117d.js"><link rel="prefetch" href="/assets/js/289.b91c68d5.js"><link rel="prefetch" href="/assets/js/29.58cca468.js"><link rel="prefetch" href="/assets/js/290.2bb41433.js"><link rel="prefetch" href="/assets/js/291.3d6cf707.js"><link rel="prefetch" href="/assets/js/292.5e454644.js"><link rel="prefetch" href="/assets/js/293.ea4849d7.js"><link rel="prefetch" href="/assets/js/294.c055bf9f.js"><link rel="prefetch" href="/assets/js/295.a7117232.js"><link rel="prefetch" href="/assets/js/296.29be540b.js"><link rel="prefetch" href="/assets/js/297.1f55f978.js"><link rel="prefetch" href="/assets/js/298.6db0958e.js"><link rel="prefetch" href="/assets/js/299.a7b296ca.js"><link rel="prefetch" href="/assets/js/30.de55cedb.js"><link rel="prefetch" href="/assets/js/300.4c39a437.js"><link rel="prefetch" href="/assets/js/301.7c3996eb.js"><link rel="prefetch" href="/assets/js/302.b8f86a52.js"><link rel="prefetch" href="/assets/js/303.f9b0fd83.js"><link rel="prefetch" href="/assets/js/304.c69ee604.js"><link rel="prefetch" href="/assets/js/305.95cbd15d.js"><link rel="prefetch" href="/assets/js/306.1ff4a5b4.js"><link rel="prefetch" href="/assets/js/31.031006e5.js"><link rel="prefetch" href="/assets/js/32.f5c2f343.js"><link rel="prefetch" href="/assets/js/33.068f72bb.js"><link rel="prefetch" href="/assets/js/34.ec130368.js"><link rel="prefetch" href="/assets/js/35.207e43fc.js"><link rel="prefetch" href="/assets/js/36.6c644055.js"><link rel="prefetch" href="/assets/js/37.ba786e7c.js"><link rel="prefetch" href="/assets/js/38.ff30adeb.js"><link rel="prefetch" href="/assets/js/39.ad01f66d.js"><link rel="prefetch" href="/assets/js/4.95ae4cf6.js"><link rel="prefetch" href="/assets/js/40.4198dc36.js"><link rel="prefetch" href="/assets/js/41.9be5fed1.js"><link rel="prefetch" href="/assets/js/42.a88688f5.js"><link rel="prefetch" href="/assets/js/43.13a74f30.js"><link rel="prefetch" href="/assets/js/44.434215ff.js"><link rel="prefetch" href="/assets/js/45.c5316a34.js"><link rel="prefetch" href="/assets/js/46.ae70046a.js"><link rel="prefetch" href="/assets/js/47.29eec75e.js"><link rel="prefetch" href="/assets/js/48.31d904ac.js"><link rel="prefetch" href="/assets/js/49.132faa9d.js"><link rel="prefetch" href="/assets/js/5.80c55a2f.js"><link rel="prefetch" href="/assets/js/50.43e65e30.js"><link rel="prefetch" href="/assets/js/51.e150b16d.js"><link rel="prefetch" href="/assets/js/52.0fd20763.js"><link rel="prefetch" href="/assets/js/53.2894c746.js"><link rel="prefetch" href="/assets/js/55.d72cfaf4.js"><link rel="prefetch" href="/assets/js/56.bd786fde.js"><link rel="prefetch" href="/assets/js/57.e7a24fc4.js"><link rel="prefetch" href="/assets/js/58.86be8809.js"><link rel="prefetch" href="/assets/js/59.1fc1b16c.js"><link rel="prefetch" href="/assets/js/6.8bfe5b3b.js"><link rel="prefetch" href="/assets/js/60.976d7fb1.js"><link rel="prefetch" href="/assets/js/61.d6598641.js"><link rel="prefetch" href="/assets/js/62.5d7ed6bd.js"><link rel="prefetch" href="/assets/js/63.0ed790b5.js"><link rel="prefetch" href="/assets/js/64.1f01ba55.js"><link rel="prefetch" href="/assets/js/65.b1097f11.js"><link rel="prefetch" href="/assets/js/66.d8550bcf.js"><link rel="prefetch" href="/assets/js/67.943eac1f.js"><link rel="prefetch" href="/assets/js/68.5e9dc6a5.js"><link rel="prefetch" href="/assets/js/69.98da4aff.js"><link rel="prefetch" href="/assets/js/7.757c1afa.js"><link rel="prefetch" href="/assets/js/70.49af115a.js"><link rel="prefetch" href="/assets/js/71.aa563e74.js"><link rel="prefetch" href="/assets/js/72.79347230.js"><link rel="prefetch" href="/assets/js/73.02042d55.js"><link rel="prefetch" href="/assets/js/74.384a94b0.js"><link rel="prefetch" href="/assets/js/75.a9ea33fb.js"><link rel="prefetch" href="/assets/js/76.055e3698.js"><link rel="prefetch" href="/assets/js/77.6d83b962.js"><link rel="prefetch" href="/assets/js/78.d16d7391.js"><link rel="prefetch" href="/assets/js/79.363bf99c.js"><link rel="prefetch" href="/assets/js/8.2b1cf8be.js"><link rel="prefetch" href="/assets/js/80.423dbbd0.js"><link rel="prefetch" href="/assets/js/81.13ec062e.js"><link rel="prefetch" href="/assets/js/82.afb55f18.js"><link rel="prefetch" href="/assets/js/83.09379101.js"><link rel="prefetch" href="/assets/js/84.4f6b5143.js"><link rel="prefetch" href="/assets/js/85.6a11dbf7.js"><link rel="prefetch" href="/assets/js/86.8d26e081.js"><link rel="prefetch" href="/assets/js/87.56f9d27c.js"><link rel="prefetch" href="/assets/js/88.76645875.js"><link rel="prefetch" href="/assets/js/89.3367e54f.js"><link rel="prefetch" href="/assets/js/9.d20a6ead.js"><link rel="prefetch" href="/assets/js/90.cf6be192.js"><link rel="prefetch" href="/assets/js/91.a063a255.js"><link rel="prefetch" href="/assets/js/92.14d748e0.js"><link rel="prefetch" href="/assets/js/93.1ff89e54.js"><link rel="prefetch" href="/assets/js/94.b7fda6c5.js"><link rel="prefetch" href="/assets/js/95.36ab2cb7.js"><link rel="prefetch" href="/assets/js/96.1622a1a3.js"><link rel="prefetch" href="/assets/js/97.c8d4510e.js"><link rel="prefetch" href="/assets/js/98.32eb7a9a.js"><link rel="prefetch" href="/assets/js/99.70225543.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b8c18fa1.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu have-body-img"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.png" alt="Christina's blog" class="logo"> <span class="site-name can-hide">Christina's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><a href="/web/" class="link-title">前端</a> <span class="title" style="display:none;">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>前端文章</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/pages/8143cc480faf9a11/" class="nav-link">JavaScript</a></li></ul></li><li class="dropdown-item"><h4>学习笔记</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note/javascript/" class="nav-link">《JavaScript教程》</a></li><li class="dropdown-subitem"><a href="/note/js/" class="nav-link">《JavaScript高级程序设计》</a></li><li class="dropdown-subitem"><a href="/note/es6/" class="nav-link">《ES6 教程》</a></li><li class="dropdown-subitem"><a href="/note/vue/" class="nav-link">《Vue》</a></li><li class="dropdown-subitem"><a href="/note/react/" class="nav-link">《React》</a></li><li class="dropdown-subitem"><a href="/note/typescript-axios/" class="nav-link">《TypeScript 从零实现 axios》</a></li><li class="dropdown-subitem"><a href="/note/git/" class="nav-link">《Git》</a></li><li class="dropdown-subitem"><a href="/pages/51afd6/" class="nav-link">《TypeScript》</a></li><li class="dropdown-subitem"><a href="/pages/4643cd/" class="nav-link">《JS设计模式总结》</a></li><li class="dropdown-subitem"><a href="/note/uniapp/" class="nav-link">《uniapp》</a></li><li class="dropdown-subitem"><a href="/note/vue3/" class="nav-link">《vue3》</a></li><li class="dropdown-subitem"><a href="/note/nestjs/" class="nav-link">《nestjs》</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="页面" class="dropdown-title"><a href="/ui/" class="link-title">页面</a> <span class="title" style="display:none;">页面</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/8309a5b876fc95e3/" class="nav-link">HTML</a></li><li class="dropdown-item"><!----> <a href="/pages/0a83b083bdf257cb/" class="nav-link">CSS</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术" class="dropdown-title"><a href="/technology/" class="link-title">技术</a> <span class="title" style="display:none;">技术</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/9a7ee40fc232253e/" class="nav-link">技术文档</a></li><li class="dropdown-item"><!----> <a href="/pages/4c778760be26d8b3/" class="nav-link">GitHub技巧</a></li><li class="dropdown-item"><!----> <a href="/pages/117708e0af7f0bd9/" class="nav-link">Nodejs</a></li><li class="dropdown-item"><!----> <a href="/pages/41f87d890d0a02af/" class="nav-link">博客搭建</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多" class="dropdown-title"><a href="/more/" class="link-title">更多</a> <span class="title" style="display:none;">更多</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/f2a556/" class="nav-link">学习</a></li><li class="dropdown-item"><!----> <a href="/pages/aea6571b7a8bae86/" class="nav-link">面试</a></li><li class="dropdown-item"><!----> <a href="/pages/2d615df9a36a98ed/" class="nav-link">心情杂货</a></li><li class="dropdown-item"><!----> <a href="/pages/baaa02/" class="nav-link">实用技巧</a></li><li class="dropdown-item"><!----> <a href="/friends/" class="nav-link">友情链接</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">关于</a></div><div class="nav-item"><a href="/pages/beb6c0bd8a66cea6/" class="nav-link">收藏</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <a href="https://github.com/781288772/vuepressBlog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="/img/avatar.jpg"> <div class="blogger-info"><h3>Christina</h3> <span>前端小白</span></div></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><a href="/web/" class="link-title">前端</a> <span class="title" style="display:none;">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>前端文章</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/pages/8143cc480faf9a11/" class="nav-link">JavaScript</a></li></ul></li><li class="dropdown-item"><h4>学习笔记</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note/javascript/" class="nav-link">《JavaScript教程》</a></li><li class="dropdown-subitem"><a href="/note/js/" class="nav-link">《JavaScript高级程序设计》</a></li><li class="dropdown-subitem"><a href="/note/es6/" class="nav-link">《ES6 教程》</a></li><li class="dropdown-subitem"><a href="/note/vue/" class="nav-link">《Vue》</a></li><li class="dropdown-subitem"><a href="/note/react/" class="nav-link">《React》</a></li><li class="dropdown-subitem"><a href="/note/typescript-axios/" class="nav-link">《TypeScript 从零实现 axios》</a></li><li class="dropdown-subitem"><a href="/note/git/" class="nav-link">《Git》</a></li><li class="dropdown-subitem"><a href="/pages/51afd6/" class="nav-link">《TypeScript》</a></li><li class="dropdown-subitem"><a href="/pages/4643cd/" class="nav-link">《JS设计模式总结》</a></li><li class="dropdown-subitem"><a href="/note/uniapp/" class="nav-link">《uniapp》</a></li><li class="dropdown-subitem"><a href="/note/vue3/" class="nav-link">《vue3》</a></li><li class="dropdown-subitem"><a href="/note/nestjs/" class="nav-link">《nestjs》</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="页面" class="dropdown-title"><a href="/ui/" class="link-title">页面</a> <span class="title" style="display:none;">页面</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/8309a5b876fc95e3/" class="nav-link">HTML</a></li><li class="dropdown-item"><!----> <a href="/pages/0a83b083bdf257cb/" class="nav-link">CSS</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术" class="dropdown-title"><a href="/technology/" class="link-title">技术</a> <span class="title" style="display:none;">技术</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/9a7ee40fc232253e/" class="nav-link">技术文档</a></li><li class="dropdown-item"><!----> <a href="/pages/4c778760be26d8b3/" class="nav-link">GitHub技巧</a></li><li class="dropdown-item"><!----> <a href="/pages/117708e0af7f0bd9/" class="nav-link">Nodejs</a></li><li class="dropdown-item"><!----> <a href="/pages/41f87d890d0a02af/" class="nav-link">博客搭建</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多" class="dropdown-title"><a href="/more/" class="link-title">更多</a> <span class="title" style="display:none;">更多</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/f2a556/" class="nav-link">学习</a></li><li class="dropdown-item"><!----> <a href="/pages/aea6571b7a8bae86/" class="nav-link">面试</a></li><li class="dropdown-item"><!----> <a href="/pages/2d615df9a36a98ed/" class="nav-link">心情杂货</a></li><li class="dropdown-item"><!----> <a href="/pages/baaa02/" class="nav-link">实用技巧</a></li><li class="dropdown-item"><!----> <a href="/friends/" class="nav-link">友情链接</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">关于</a></div><div class="nav-item"><a href="/pages/beb6c0bd8a66cea6/" class="nav-link">收藏</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <a href="https://github.com/781288772/vuepressBlog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>JavaScript文章</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/pages/8143cc480faf9a11/" class="sidebar-link">new命令原理</a></li><li><a href="/pages/b1af5cb8996363c5/" class="sidebar-link">ES5面向对象</a></li><li><a href="/pages/1f4123be6f45abcd/" class="sidebar-link">ES6面向对象</a></li><li><a href="/pages/e808fba1fa8fbab2/" class="sidebar-link">多种数组去重性能对比</a></li><li><a href="/pages/40b4db2d38ba85f2/" class="sidebar-link">JS随机打乱数组</a></li><li><a href="/pages/40f623be692cf8bc/" class="sidebar-link">判断是否为移动端浏览器</a></li><li><a href="/pages/f1acb712033ac8da/" class="sidebar-link">将一维数组按指定长度转为二维数组</a></li><li><a href="/pages/0f6a0ac99b62ede5/" class="sidebar-link">防抖与节流函数</a></li><li><a href="/pages/7a91be2d502346ce/" class="sidebar-link">JS获取和修改url参数</a></li><li><a href="/pages/fd4a16d56b83c1bc/" class="sidebar-link">比typeof运算符更准确的类型判断</a></li><li><a href="/pages/912823/" class="sidebar-link">时间戳转日期格式</a></li><li><a href="/pages/acb41d/" class="sidebar-link">2021 年 JavaScript 大事记</a></li><li><a href="/pages/4c81f9/" class="sidebar-link">如何处理支付宝支付后端返回的html代码</a></li><li><a href="/pages/af7224/" class="sidebar-link">2021 JavaScript Rising Stars</a></li><li><a href="/pages/8818f3/" class="sidebar-link">vue下载流文件</a></li><li><a href="/pages/284702/" class="sidebar-link">如果你还不会用 git 回滚代码，那你一定要来看看</a></li><li><a href="/pages/8d7bf2/" class="sidebar-link">element ui 表单循环表单验证</a></li><li><a href="/pages/094888/" class="sidebar-link">new操作符具体干了什么？</a></li><li><a href="/pages/a10cda/" class="sidebar-link">5个 VueUse 库函数，让你工作效率翻倍</a></li><li><a href="/pages/033b93/" class="sidebar-link">六千字详解！讲透 Vue3 响应式是如何实现的</a></li><li><a href="/pages/ac58c3/" class="sidebar-link">2022 前端技术领域这些新变化，你准备好了吗？</a></li><li><a href="/pages/58191a/" class="sidebar-link">Vue 3 将成为新的默认版本</a></li><li><a href="/pages/2b41cf/" class="sidebar-link">前端鉴权的兄弟们：cookie、session、token、jwt、单点登录</a></li><li><a href="/pages/79ee83/" class="sidebar-link">分享 12 个解决日常工作问题的JS 代码片段</a></li><li><a href="/pages/6e54f9/" class="sidebar-link">来聊聊Vue中使用Render函数和JSX</a></li><li><a href="/pages/793bd4/" class="sidebar-link">Vue新一代状态管理工具Pinia上手指南</a></li><li><a href="/pages/1418a0/" class="sidebar-link">聊一聊目前 Web 前端开发的一些困局</a></li><li><a href="/pages/c0a409/" class="sidebar-link">即将到来的 ECMAScript 2022 新特性</a></li><li><a href="/pages/0be87d/" class="sidebar-link">10个常用的JS工具库</a></li><li><a href="/pages/5ce80d/" class="sidebar-link">Promise、Generator、async有什么区别？</a></li><li><a href="/pages/be1685/" class="sidebar-link">20条示例代码让你的代码更简洁</a></li><li><a href="/pages/8b20c9/" class="sidebar-link">Vue3的七种组件通信方式</a></li><li><a href="/pages/fa985d/" class="sidebar-link">2022前端技术领域会有哪些新的变化</a></li><li><a href="/pages/74f43c/" class="sidebar-link">7个高频正则表达式</a></li><li><a href="/pages/7fa683/" class="sidebar-link">JS【数组合并】的性能差异对比</a></li><li><a href="/pages/4fdfb3/" class="sidebar-link">浅拷贝与深拷贝</a></li><li><a href="/pages/3b8951/" class="sidebar-link">新特性CSS@layer</a></li><li><a href="/pages/d8019c/" class="sidebar-link">10 个“哇塞”的 Web 资源</a></li><li><a href="/pages/ab8ea4/" class="sidebar-link">vue技巧</a></li><li><a href="/pages/aa1211/" class="sidebar-link">为什么说移动端该放弃rem适配方案了？</a></li><li><a href="/pages/18c294/" class="sidebar-link">Promise 原理</a></li><li><a href="/pages/0fe84f/" class="sidebar-link">前端性能优化之图像处理</a></li><li><a href="/pages/d1f23e/" class="sidebar-link">不要再直接写undefined了</a></li><li><a href="/pages/cd0fad/" class="sidebar-link">Vuex 的小技巧</a></li><li><a href="/pages/76437a/" class="sidebar-link">初识 node 框架 Nestjs</a></li><li><a href="/pages/ad94a8/" class="sidebar-link">同步与异步</a></li><li><a href="/pages/f6407f/" aria-current="page" class="active sidebar-link">玩转数组高级技法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/pages/f6407f/#_1-批量制造数据" class="sidebar-link">1.批量制造数据</a></li><li class="sidebar-sub-header"><a href="/pages/f6407f/#_2-数组合并去重" class="sidebar-link">2.数组合并去重</a></li><li class="sidebar-sub-header"><a href="/pages/f6407f/#_3-创建数组的几种方式" class="sidebar-link">3.创建数组的几种方式</a></li></ul></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>三级目录</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>学习笔记</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-70a2d273><div class="articleInfo" data-v-70a2d273><ul class="breadcrumbs" data-v-70a2d273><li data-v-70a2d273><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-70a2d273></a></li> <li data-v-70a2d273><a href="/web" title="前端-目录页" data-v-70a2d273>前端</a></li> <li data-v-70a2d273><a href="/web/#JavaScript文章" title="前端#JavaScript文章" data-v-70a2d273>JavaScript文章</a></li> <!----></ul> <div class="info" data-v-70a2d273><div title="作者" class="author iconfont icon-touxiang" data-v-70a2d273><a href="https://github.com/781288772" target="_blank" title="作者" class="beLink" data-v-70a2d273>Christin</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-70a2d273><a href="javascript:;" data-v-70a2d273>2022-09-26</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABH1JREFUSA3tVl1oHFUUPmdmd2ltklqbpJDiNnXFmgbFktho7YMPNiJSSZM0+CAYSkUELVhM6YuwIPpgoOKDqOBDC0XE2CQoNtQXBUFTTcCi+Wlh1V2TQExsUzcltd3M9Tt3ZjZzZ2fT+OJTL8yeM+eee757fmeJbq//KQL8X3DUSFOcfr7cRsRtxNQMWueeVzOkaITIGqQHNg5y8+jNW9ldM7A6nTpAjuolUikAwq7CE3WcM2RRDz+XGVgN3FptU/aUSlvq9Pa3iZ1+sgAqJyyAFqkipd9dqiwHF3P65YycLWc/6sqGrvoEoIp6DOFaX5h6+dnfjkWprwqsPk0dUGq5vySwDImC10KxFHgGL1SWoc92O3eVht09qdXNH11I2SsTsJYqMWzihqGMi+A+Garf3BAuuLI5oGlULyNfyB/HYNujwktOfRrMr5t77NmevqaUopx0grnKAyvVpmwUDB4x6FPXuGvYLTDwWsejwgtgkYKPqRJg8SV6xaiZ3ZTppGneS4yfH5/66fZSDHv+QZci/+h5c5UHtpy67JUqGppM0sh0Nc1dW6/N1W5Yoqat8/TU/VnadmdeW2PLLSyh0cvxBs3KbqTmwYPpxN4do/mzE8nEpvX/UMu2Wbp74zUAK5q6WkHns7V0eWkdPbPzd3rxkTGybadYySumVzhcaJFbs5UrEkQ/+CK8gF5dnh/6ciIZ73gwQ927L1IitoxKLXYP3SjYdOrHHfTZhRRlFyrorafPk20B3HPD1y2G3qKZME5Jcf3t/HUC13/8tSd++vqFveMUTwAUxSUFI1QekR1+bIze3D9MF2aq6cPvG72CgnldWCFqyRw3lwH8ZMerjTD9ElRO7Gv44wNpC90aASqGfVlz/Rx17srQ57/UU26hkhQqUB7dBR71WmzQhHUnblGmVOEw0jhbV1n9OlXUDCIRGaNV5Jp43N516fN7JmnTHdfp7Hgy0luO4aMhtkLL8Bi3bUWYvzh5Mn1dTxrL6QmGuRhGL/TiTTxRoEdTszSaq9GR0NGA3KdkOz3hqSV3MIDhQ5IVX/Ivx3umBti2es2h4eZby7x8br1rkf7Mo90AqC8aQ3sJeNzqFRu+vSANAQe3PL7l0HGOAdwDCeZYvNKeoZp1Qfs6Aipndh86HmFRi0LAnEO47wsqM6cdfjh3jBPUzhZy7nvlUfFsamED1VQt6aISHVymXZ/B2aCtIG8AI8xfobj2d3en1wWVhOeHELKmLQ1s211s88comkv4UCwWyF787mJdYXtNfhKAXVqnKTq8QZvGAGGOfaTo5pGZ/PwbUCr5+DPr/1J92JNHr9aOl/F3iI5+O1nfybsGxoimvZ3ViWSluDITw3P37mypheDIPY0tw7+O/5ApbkYw+zpfaUVu32Pi98+defdUhEpZkRFq0aqyNh9FuL9hpYbEm6iwi0z2REd09ZmyENEbuhjDWzKvZXTqKYaBIr3tt5kuPtQBZFvEUwHt60vfCNu41XsksH9Ij1BMMz1Y0OOunHNShFIP5868g5zeXmuLwL9T4b6Q2+KejgAAAABJRU5ErkJggg==">
+          玩转数组高级技法
+        </h1> <!----> <div class="theme-vdoing-content content__default"><h1 id="玩转数组高级技法-成为js高手"><a href="#玩转数组高级技法-成为js高手" class="header-anchor">#</a> 玩转数组高级技法，成为JS高手</h1> <h2 id="_1-批量制造数据"><a href="#_1-批量制造数据" class="header-anchor">#</a> 1.批量制造数据</h2> <p>一、创建新数组使用 for 循环批量 push 数据</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>function createData() {
+  const data = [];
+  for (let i = 0; i &lt; 1000; i++) {
+    data.push({
+      name: `name${i + 1}`,
+    });
+  }
+  return data;
+}
+
+const data = createData();
+console.log(data);
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>二、创建空数组，填充fill，然后map</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>function createData() {
+  // 如果不 fill 循环默认会跳过空值
+  return new Array(1000).fill(null).map((v, i) =&gt; ({ name: `name${i + 1}` }));
+}
+
+const data = createData();
+console.log(data);
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>三、Array.from 第二个初始化函数返回数据</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>function createData() {
+  return Array.from({ length: 1000 }, (v, i) =&gt; ({ name: `name${i + 1}` }));
+}
+
+const data = createData();
+console.log(data);
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h2 id="_2-数组合并去重"><a href="#_2-数组合并去重" class="header-anchor">#</a> 2.数组合并去重</h2> <p>一、Set去重</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const arr1 = [1, 2, 3];
+const arr2 = [3, 4, 5];
+
+console.log(new Set([...arr1, ...arr2]));
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>二、for循环，indexOf判断是否存在</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const arr1 = [1, 2, 3];
+const arr2 = [3, 4, 5];
+
+function mergeArray(arr1, arr2) {
+  // 克隆
+  const cloneArr1 = arr1.slice(0);
+  let v;
+  for (let i = 0; i &lt; arr2.length; i++) {
+    v = arr2[i];
+    // 按位非，反转操作数的位，表象是对后面数字取负减一
+    // 当数组中不存在此项 indexOf 返回 -1 按位非得 0 不走 if 逻辑
+    // 如果两个数组都包含NaN，想要去重可使用includes
+    if (~cloneArr1.indexOf(v)) {
+      continue;
+    }
+    cloneArr1.push(v);
+  }
+  return cloneArr1;
+}
+
+console.log(mergeArray(arr1, arr2));
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><p>去重对象？</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const arr1 = [{ id: 1 }, { id: 2 }, { id: 3 }];
+const arr2 = [{ id: 3 }, { id: 4 }, { id: 5 }];
+
+console.log(Array.from(new Set([...arr1, ...arr2]))); 
+// [ { id: 1 }, { id: 2 }, { id: 3 }, { id: 3 }, { id: 4 }, { id: 5 } ] 
+// 这样对象都是独立的引用，肯定无法去除属性相同的数据啦
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>如果是相同引用呢？</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const obj3 = { id: 3 };
+const arr1 = [{ id: 1 }, { id: 2 }, obj3];
+const arr2 = [obj3, { id: 4 }, { id: 5 }];
+
+console.log(Array.from(new Set([...arr1, ...arr2]))); // 确实可以，但是你开发这样做？
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>我们可以这样做</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const arr1 = [{ id: 1 }, { id: 2 }, { id: 3 }];
+const arr2 = [{ id: 3 }, { id: 4 }, { id: 5 }];
+
+function mergeArray(arr1, arr2) {
+  // 克隆
+  const cloneArr1 = arr1.slice(0);
+  let v;
+  for (let i = 0; i &lt; arr2.length; i++) {
+    v = arr2[i];
+    // 能找到相同 id 属性值的数据则进入判断
+    if (~cloneArr1.findIndex((el) =&gt; el.id === v.id)) {
+      continue;
+    }
+    cloneArr1.push(v);
+  }
+  return cloneArr1;
+}
+
+console.log(mergeArray(arr1, arr2)); // [ { id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 } ]
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><h2 id="_3-创建数组的几种方式"><a href="#_3-创建数组的几种方式" class="header-anchor">#</a> 3.创建数组的几种方式</h2> <ul><li>字面量</li></ul> <div class="language-// 字面量 line-numbers-mode"><pre class="language-text"><code>const arr1 = [1, 2, 3, ...[4, 5, 6]]; // 1,2,3,4,5,6
+const arr2 = [, , , , ,]; // [empty × 5]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>new Array（当参数只有一个且是数字时，new Array()表示数组的长度，其余参数则是数组的内容）</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>const arr3 = new Array(5); // [empty × 5]
+const arr4 = new Array(1, 2, 3); // 1,2,3
+const arr5 = new Array(&quot;a&quot;); // [&quot;a&quot;]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>Array.of（参数只用来作为数组中的内容）</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>const arr6 = Array.of(5); // [5]
+const arr7 = Array.of(1, 'abc', true); // [1, &quot;abc&quot;, true]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>Array.from 可传入类数组和可遍历对象转换为真数组</p> <p>（第一个参数传入对应类数组和可遍历对象，第二个函数参数则相当于对生成的数组做一次map）</p> <p>可遍历和类数组 ==&gt; 数组、字符串、Set、Map、NodeList、HTMLCollection、arguments以及拥有 length 属性的任意对象</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const arr8 = Array.from([1, 2, 3]); // [1,2,3]
+const arr9 = Array.from({ length: 3 }, (value, index) =&gt; {
+  return index + 1;    
+}); // [1,2,3]
+const arr10 = Array.from({ 0: &quot;a&quot;, 1: &quot;b&quot;, 2: &quot;c&quot;, length: 3 }); // [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>其他的很多可以返回数组的方法都算</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// Array.prototype.slice
+const arr11 = Array.prototype.slice.call(document.querySelectorAll(&quot;div&quot;)); // [div, div, div....]
+// Array.prototype.concat
+const arr12 = Array.prototype.concat.call([], [1, 2, 3]); // [1, 2, 3]
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>4.类数组</p> <ul><li><p>是一个普通对象，不具备数组自带丰富的内建方法</p></li> <li><p>key是以数字或者字符串数字组成</p></li> <li><p>必须有length属性</p></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>const arrayLike = {
+  0: &quot;a&quot;,
+  1: &quot;b&quot;,
+  2: &quot;c&quot;,
+  name: &quot;test&quot;,
+  length: 3,
+  push: Array.prototype.push, //自己实现
+  splice: Array.prototype.splice,
+};
+
+//由于类数组对象length属性声明了对象有多少个属性,所以可以使用for遍历对象属性:
+for (let i = 0; i &lt; arrayLike.length; i++) {
+  console.log(i + &quot;:&quot; + arrayLike[i]);
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>常见的类数组</p> <ul><li>arguments</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>function person(name, age, sex) {
+  console.log(&quot;person arguments:&quot;, arguments);
+  console.log(&quot;person type:&quot;, Object.prototype.toString.call(arguments));
+}
+
+person(&quot;name&quot;, &quot;age&quot;, &quot;sex&quot;);
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>NodeList、HTMLCollection、DOMTokenList等</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>const nodeList = document.querySelectorAll(&quot;box&quot;);
+console.log(&quot;querySelectorAll type:&quot;, Object.prototype.toString.call(nodeList));
+
+const htmlCollection = document.getElementsByTagName(&quot;div&quot;);
+console.log(&quot;getElementsByTagName type:&quot;, Object.prototype.toString.call(htmlCollection)); 
+
+const DOMTokenList = document.querySelector(&quot;div&quot;).classList;
+console.log(&quot;classList:&quot;, DOMTokenList);
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li>奇特：字符串（具备类数组的特性，但一般类数组指对象）</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>const str = &quot;abc&quot;;
+console.log(Object.keys(str)); // ['0', '1', '2']
+console.log(Array.from(str)); // ['a', 'b', 'c']
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>判断是否是类数组</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>function isArrayLikeObject(arr) {
+  // 不是对象直接返回
+  if (arr == null || typeof arr !== &quot;object&quot;) return false;
+
+  const lengthMaxValue = Math.pow(2, 53) - 1;
+  //  是否有 length 属性
+  if (!Object.prototype.hasOwnProperty.call(arr, &quot;length&quot;)) return false;
+  //  length 属性是否是number类型
+  if (typeof arr.length != &quot;number&quot;) return false;
+  //使用 isFinite() 判断是否在正常数字范围
+  if (!isFinite(arr.length)) return false;
+  // 构造函数等于Array
+  if (Array === arr.constructor) return false;
+
+  // 长度有效值
+  if (arr.length &gt;= 0 &amp;&amp; arr.length &lt; lengthMaxValue) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+console.log(isArrayLikeObject(null)); // false
+
+console.log(isArrayLikeObject({ 0: &quot;a&quot;, 1: &quot;b&quot;, length: 2 })); // true
+
+console.log(isArrayLikeObject({ 0: 1, 2: 3, length: &quot;&quot; })); // false
+
+console.log(isArrayLikeObject({ 0: 1, 2: 3 })); // false
+
+console.log(isArrayLikeObject([1, 2])); // false
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br></div></div><p>类数组如何转换为数组</p> <ul><li>复制遍历</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>const arr = [];
+const arrayLike = {
+  0: 1,
+  1: 2,
+  length: 2,
+};
+
+for (let i = 0; i &lt; arrayLike.length; i++) {
+  arr[i] = arrayLike[i];
+}
+
+console.log(arr); //  [1, 2]
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><ul><li>slice, concat等</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>const arrayLike = {
+  0: 1,
+  1: 2,
+  length: 2,
+};
+const array1 = Array.prototype.slice.call(arrayLike);
+console.log(array1); // [ 1, 2 ]
+
+const array2 = Array.prototype.concat.apply([], arrayLike);
+console.log(array2); // [ 1, 2 ]
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ul><li>Array.from</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>const arrayLike = {
+  0: 1,
+  1: 2,
+  length: 2,
+};
+console.log(Array.from(arrayLike)); // [ 1, 2 ]
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>Array.apply</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>const arrayLike = {
+  0: 1,
+  1: 2,
+  length: 2,
+};
+
+console.log(Array.apply(null, arrayLike)); // [ 1, 2 ]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>扩展运算符</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>console.log([...document.body.childNodes]); // [div, script, script...]
+
+// arguments
+function argumentsTest() {
+  console.log([...arguments]); // [ 1, 2, 3 ]
+}
+argumentsTest(1, 2, 3);
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>如何让类数组使用上数组丰富的内建方法</p> <ul><li><p>在类数组对象上直接定义数组原型的方法</p></li> <li><p>运用call或者apply显示绑定this的指向</p></li></ul> <p>例如我想通过 filter 方法过滤出类数组中元素包含 &quot;i&quot; 这个字符的所有元素。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const arrayLike = {
+  0: &quot;i love&quot;,
+  1: &quot;you&quot;,
+  length: 1,
+};
+
+console.log([].filter.call(arrayLike, (item) =&gt; item.includes(&quot;i&quot;))); // [ 'i love' ]
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>为什么会这样？其实可以想想 filter 是如何实现的。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>[].__proto__.myfilter = function (callback) {
+  let newArr = [];
+  for (let i = 0; i &lt; this.length; i++) {
+    if (callback(this[i])) {
+      newArr.push(this[i]);
+    }
+  }
+  return newArr;
+};
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>可以看出因为 filter 实现是通过 this 进行绑定的，哪个数组调用了这个filter，filter中的 this 就指向哪个数组</p> <p>数组方法的使用注意事项</p> <p>数组的长度</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const arr1 = [1];
+const arr2 = [1, ,];
+const arr3 = new Array(&quot;10&quot;);
+const arr4 = new Array(10);
+
+console.log(&quot;arr1 length: &quot; + arr1.length); // arr1 length: 1
+console.log(&quot;arr2 length: &quot; + arr2.length); // arr2 length: 2
+console.log(&quot;arr3 length: &quot; + arr3.length); // arr3 length: 1
+console.log(&quot;arr4 length: &quot; + arr4.length); // arr4 length: 10
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>数组的空元素 empty</p> <ul><li><p>empty:数组的空位，指数组的某一位置没有任何值，有空位的数组也叫稀疏数组</p></li> <li><p>稀疏数组性能会较差，可以避免创建</p></li> <li><p>Array.apply(null,Array(3))</p></li> <li><p>[...new Array(3)]</p></li> <li><p>Array.from(Array(3))</p></li> <li><p>一般遍历如forEach、map、reduce 会自动跳过空位</p></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>const arr = [1, ,];
+
+arr.forEach((item) =&gt; console.log(item)); // 1
+
+console.log(&quot;arr&quot;, arr);// arr [ 1, &lt;1 empty item&gt; ]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>基于值进行运算，空位的值作为undefined</p> <ul><li><p>find,findIndex,includes等, indexOf除外</p></li> <li><p>当被作为迭代的时候，参与Object.entries、扩展运算符、for of 等</p></li></ul> <p>join和toString，空位怎么处理</p> <ul><li><p>视为空字符串</p></li> <li><p>toString 内部其实会调用 join 方法</p></li></ul> <p>数组不会自动添加分号</p> <ul><li>(，[， + , -,/，其作为一行代码的开头，很可能产生意外的情况，所以，没事代码最后写个分号，保准</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>const objA = { a: 1 }
+[&quot;a&quot;];
+
+console.log(objA); // 1
+
+const objB = [&quot;a&quot;]
+[&quot;a&quot;];
+
+console.log(objB);  // undefined
+
+const a = [[1, 2], 2, 3];
+console.log(a) 
+[0, 2, 3].map((v) =&gt; console.log(v * v)); // 报错
+console.log(a);
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>indexOf与includes</p> <table><thead><tr><th>方法</th> <th>返回值</th> <th>是否能查找NaN</th> <th>[, ,]空位</th> <th>undefined</th></tr></thead> <tbody><tr><td>indexOf</td> <td>number</td> <td>×</td> <td>×</td> <td>√</td></tr> <tr><td>includes</td> <td>boolean</td> <td>√</td> <td>√</td> <td>√</td></tr></tbody></table> <div class="language- line-numbers-mode"><pre class="language-text"><code>const array1 = [NaN];
+console.log(&quot;array.includes NaN:&quot;, array1.includes(NaN)); //  true
+console.log(&quot;array.indexOf NaN:&quot;, array1.indexOf(NaN) &gt; -1); // false
+
+const array2 = [1, ,];
+console.log(&quot;array.includes ,,:&quot;, array2.includes(undefined)); // true
+console.log(&quot;array.indexOf ,,:&quot;, array2.indexOf(undefined) &gt; -1); // false
+
+const array3 = [undefined];
+console.log(&quot;array.includes undefined:&quot;, array3.includes(undefined)); // true
+console.log(&quot;array.indexOf undefined:&quot;, array3.indexOf(undefined) &gt; -1);  // true
+
+console.log(Object.prototype.hasOwnProperty.call(array2, 1)); // 区分空位和undefined，判断此位上是否有值
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>数组可变长度问题</p> <ul><li><p>length 代表数组中元素个数，数组额外附加属性不计算在内</p></li> <li><p>length 可写，可以通过修改length改变数组的长度</p></li> <li><p>数组操作不存在越界，找不到下标，返回undefined</p></li></ul> <p>数组查找和过滤 🍄</p> <table><thead><tr><th>方法</th> <th>返回结果类型</th> <th>是否能短路操作</th> <th>是否需要全部满足条件</th> <th>遍历空元素</th></tr></thead> <tbody><tr><td>some</td> <td>boolean</td> <td>√</td> <td>×</td> <td>×</td></tr> <tr><td>find</td> <td>undefined</td> <td>object</td> <td>√</td> <td>×</td></tr> <tr><td>findelndex</td> <td>number</td> <td>√</td> <td>×</td> <td>√</td></tr> <tr><td>every</td> <td>boolean</td> <td>√</td> <td>√</td> <td>×</td></tr> <tr><td>filter</td> <td>array</td> <td>×</td> <td>×</td> <td>×</td></tr></tbody></table> <p>改变自身的方法 🚀</p> <ul><li>push、pop、unshift、shift</li> <li>sort、splice、reverse</li> <li>ES6: copyWithin、fill</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>let array = [1, 2, 3, 4, 5, 6, 7];
+
+array.push(&quot;push&quot;);
+console.log(&quot;array push:&quot;, array);
+
+array.pop();
+console.log(&quot;array pop:&quot;, array);
+
+array.unshift(&quot;unshift&quot;);
+console.log(&quot;array unshift:&quot;, array);
+
+array.shift();
+console.log(&quot;array shift:&quot;, array);
+
+array.reverse();
+console.log(&quot;array reverse:&quot;, array);
+
+array.sort();
+console.log(&quot;array sort:&quot;, array);
+
+array.splice(2, 1);
+console.log(&quot;array splice:&quot;, array);
+
+array.copyWithin(2, 0);
+console.log(&quot;array copyWithin:&quot;, array);
+
+array.fill(&quot;fill&quot;, 3);
+console.log(&quot;array fill:&quot;, array);
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br></div></div><p>delete误区</p> <ul><li>delete删除数组元素，后面元素不会补齐，delete删除引用</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>const array = [1, 2, 3, 4, 5];
+delete array[2];
+console.log(&quot;delete array:&quot;, array); // delete array: [ 1, 2, &lt;1 empty item&gt;, 4, 5 ]
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>push vs concat</p> <ul><li>大量数据操作的时候 push 性能会比 concat 性能高很多</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>const count = 10000;
+const array1 = [1, 2, 4, 5, 6];
+
+let newArray = [];
+
+console.time(&quot;push&quot;);
+for (let i = 0; i &lt; count; i++) {
+  newArray.push(array1[0], array1[1], array1[2], array1[3], array1[4]);
+}
+console.timeEnd(&quot;push&quot;);
+
+console.time(&quot;concat&quot;);
+for (let i = 0; i &lt; count; i++) {
+  newArray = newArray.concat(array1[0], array1[1], array1[2], array1[3], array1[4]);
+}
+console.timeEnd(&quot;concat&quot;);
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p>6.数组的高级用法</p> <p>1.万能数据生成器</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const createValues = (creator, length = 10) =&gt; Array.from({ length }, creator);
+
+// 第一个参数控制随机数生成，第二个控制其数组长度
+const createRandomValues = (len) =&gt; createValues(Math.random, len);
+const values = createRandomValues();
+console.log(&quot;values:&quot;, values.length, values);
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>2.序列生成器</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const createValues = (creator, length = 10) =&gt; Array.from({ length }, creator);
+
+const createRange = (start, stop, step) =&gt;
+  createValues((_, i) =&gt; start + i * step, (stop - start) / step + 1);
+
+// 生成数组，里面元素是 1 ~ 100 以内每次从 1 开始每次递增 3 的数字
+const values = createRange(1, 100, 3);
+
+console.log(values);
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>3.数据生成器</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const createValues = (creator, length = 10) =&gt; Array.from({ length }, creator);
+
+function createUser(v, index) {
+  return {
+    name: `user-${index}`,
+    age: (Math.random() * 100) &gt;&gt; 0, // 取整
+  };
+}
+
+const users = createValues(createUser, 100);
+console.log(&quot;users:&quot;, users);
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>4.清空数组</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const arr = [1, 2, 3];
+arr.splice(0);
+console.log(&quot;splice:&quot;, arr); // []
+
+const arr1 = [1, 2, 3];
+arr1.length = 0;
+console.log(&quot;length:&quot;, arr1); // []
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>5.数组去重</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const arr = [
+  &quot;apple&quot;,
+  &quot;banana&quot;,
+  1,
+  1,
+  3,
+  3,
+  undefined,
+  undefined,
+  ,
+  ,
+  NaN,
+  NaN,
+  null,
+  null,
+  &quot;true&quot;,
+  true,
+  { a: 1 },
+];
+
+const arr1 = Array.from(new Set(arr));  // 正常去重
+console.log(&quot;set:&quot;, arr1);
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><p>对于数组里面对象去重</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>function uniqueArray(arr) {
+  return Array.from(new Set(arr));
+}
+
+const arr = [{ a: 1 }, { a: 1 }];
+console.log(&quot;set 不同引用：&quot;, uniqueArray(arr));
+
+const obj1 = { a: 1 };
+const arr2 = [obj1, obj1];
+console.log(&quot;set 同一引用：&quot;, uniqueArray(arr2));
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>如果我们想认为两个对象里面的 a 属性的值相同就认为是同一数组的话，可以使用 filter</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>function uniqueArray(arr = [], key) {
+ const keyValues = new Set();
+ return arr.filter((item) =&gt; {
+  if (!keyValues.has(item[key])) {
+   keyValues.add(item[key]);
+   return true;
+  }
+  return false;
+ });Array.prototype.filter + includes判断
+但是会存在性能和引用类型相同判断的问题
+}
+
+const arr = [{ a: 1 }, { a: 1 }, { a: 2 }];
+
+console.log(&quot;filter 去重：&quot;, uniqueArray(arr, &quot;a&quot;)); // filter 去重： [ { a: 1 }, { a: 2 } ]
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>6.数组交集</p> <ul><li>Array.prototype.filter + includes判断</li> <li>但是会存在性能和引用类型相同判断的问题</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>const arr1 = [0, 1, 2];
+const arr2 = [3, 2, 0];
+
+function intersectSet(arr1, arr2) {
+  return arr1.filter((item) =&gt; arr2.includes(item));
+}
+
+const values = intersectSet(arr1, arr2);
+
+console.log(values); // [ 0, 2 ]
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>我们可以这样做：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 引用类型
+function intersect(arr1, arr2, key) {
+  const map = new Map();
+  arr1.forEach((val) =&gt; map.set(val[key]));
+  return arr2.filter((val) =&gt; map.has(val[key]));
+}
+
+// 原始数据类型
+function intersectBase(arr1, arr2) {
+  const map = new Map();
+  arr1.forEach((val) =&gt; map.set(val));
+  return arr2.filter((val) =&gt; map.has(val));
+}
+
+const arr1 = [{ p: 0 }, { p: 1 }, { p: 2 }];
+const arr2 = [{ p: 3 }, { p: 2 }, { p: 1 }];
+const result = intersect(arr1, arr2, &quot;p&quot;);
+console.log(&quot;result:&quot;, result); // result: [ { p: 2 }, { p: 1 } ]
+
+const arr3 = [0, 1, 2];
+const arr4 = [3, 2, 0];
+const result1 = intersectBase(arr3, arr4);
+console.log(&quot;result1:&quot;, result1); // result1: [ 2, 0 ]
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><p>求交集性能对比：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 创建十万条数据比较性能
+function createData(length) {
+ return Array.from({ length }, (val, i) =&gt; {
+  return ~~(Math.random() * length);
+ });
+}
+
+// 使用Map
+function intersectMap(arr1, arr2) {
+ const map = new Map();
+ arr1.forEach((val) =&gt; map.set(val));
+ return arr2.filter((val) =&gt; map.has(val));
+}
+
+// 使用includes
+function intersectIncludes(arr1, arr2) {
+ return arr1.filter((item) =&gt; arr2.includes(item));
+}
+
+console.time(&quot;createData&quot;);
+const data1 = createData(100000);
+const data2 = createData(100000);
+console.timeEnd(&quot;createData&quot;);
+
+console.time(&quot;intersectMap&quot;);
+intersectMap(data1, data2);
+console.timeEnd(&quot;intersectMap&quot;);
+
+console.time(&quot;intersectIncludes&quot;);
+intersectIncludes(data1, data2);
+console.timeEnd(&quot;intersectIncludes&quot;);
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br></div></div><p>7.数组差集</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 引用类型
+function difference(arr1, arr2, key) {
+  const map = new Map();
+  arr1.forEach((val) =&gt; map.set(val[key]));
+  return arr2.filter((val) =&gt; !map.has(val[key]));
+}
+
+// 原始数据类型
+function differenceBase(arr1, arr2) {
+  const map = new Map();
+  arr1.forEach((val) =&gt; map.set(val));
+  return arr2.filter((val) =&gt; !map.has(val));
+}
+
+const arr1 = [{ p: 0 }, { p: 1 }, { p: 2 }];
+const arr2 = [{ p: 3 }, { p: 2 }, { p: 1 }];
+const result = difference(arr1, arr2, &quot;p&quot;);
+console.log(&quot;result1:&quot;, result); // result1: [ { p: 3 } ]
+
+const arr3 = [0, 1, 2];
+const arr4 = [3, 2, 0];
+const result1 = differenceBase(arr3, arr4);
+console.log(&quot;result2:&quot;, result1); // result2: [ 3 ]
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><p>8.数组删除虚（假）值</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const array = [false, 0, undefined, , &quot;&quot;, NaN, 9, true, undefined, null, &quot;test&quot;];
+const newArray = array.filter(Boolean);
+console.log(newArray); // [ 9, true, 'test' ]
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>9.获取数组中最大值和最小值</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const numArray = [1, 3, 8, 666, 22, 9982, 11, 0];
+const max = Math.max.apply(Math, numArray);
+const min = Math.min.apply(Math, numArray);
+console.log(&quot;max:&quot;, max + &quot;,min:&quot; + min); // max: 9982,min:0
+// 或者
+console.log(Math.max(...numArray)); // 9982
+console.log(Math.min(...numArray)); // 0
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>来看一个实际的例子，我们去获取用户对象中最大和最小的年龄</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const createValues = (creator, length = 10) =&gt; Array.from({ length }, creator);
+
+function createUser(v, index) {
+ return {
+  name: `user-${index}`,
+  age: (Math.random() * 100) &gt;&gt; 0,
+ };
+}
+
+const users = createValues(createUser, 10);
+const ages = users.map((u) =&gt; u.age);
+
+const max = Math.max(...ages);
+const min = Math.min(...ages);
+console.log(ages);
+console.log(&quot;max:&quot;, max + &quot;,min:&quot; + min);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>10.reduce高级用法</p> <ul><li>作用∶页面传递参数</li> <li>规律∶地址url问号(?)拼接的键值对</li></ul> <p>URLSearchParams：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const urlSP = new URLSearchParams(location.search);
+function getQueryString(key) {
+    return urlSP.get(key);
+}
+
+// 获取页面上查询参数 words 和 wordss 的值
+console.log(&quot;words:&quot;, getQueryString(&quot;words&quot;));
+console.log(&quot;wordss:&quot;, getQueryString(&quot;wordss&quot;));
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>URL：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const urlObj = new URL(location.href);
+function getQueryString(key) {
+    return urlObj.searchParams.get(key);
+}
+// urlObj.searchParams instanceof URLSearchParams 为 true，证明是其实例
+
+console.log(&quot;words:&quot;, getQueryString(&quot;words&quot;)); 
+console.log(&quot;wordss:&quot;, getQueryString(&quot;wordss&quot;));
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>使用 reduce 手写查询：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const urlObj = location.search
+.slice(1)
+.split(&quot;&amp;&quot;)
+.filter(Boolean)
+.reduce((obj, cur) =&gt; {
+    const arr = cur.split(&quot;=&quot;);
+    if (arr.length != 2) {
+        return obj;
+    }
+    obj[decodeURIComponent(arr[0])] = decodeURIComponent(arr[1]);
+    return obj;
+}, {});
+
+function getQueryString(key) {
+    return urlObj[key];
+}
+
+console.log(&quot;words:&quot;, getQueryString(&quot;words&quot;)); 
+console.log(&quot;wordss:&quot;, getQueryString(&quot;wordss&quot;)); 
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p>折上折</p> <ul><li>优惠1：9折</li> <li>优惠2：200减50</li></ul> <p>草民版：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>function discount(x) {
+  return x * 0.9;
+}
+
+function reduce(x) {
+  return x &gt; 200 ? x - 50 : x;
+}
+
+const print = console.log;
+// 享受九折
+print(reduce(discount(100))); // 90
+// 享受九折 + 满减
+print(reduce(discount(250))); // 175
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>黄金版：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>function discount(x) {
+  return x * 0.9;
+}
+function reduce(x) {
+  return x &gt; 200 ? x - 50 : x;
+}
+function getPriceMethod(discount, reduce) {
+  return function _getPrice(x) {
+    return reduce(discount(x));
+  };
+}
+const method = getPriceMethod(discount, reduce);
+
+const print = console.log;
+
+print(method(100));
+print(method(250));
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><p>王者版：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>function compose(...funcs) {
+  if (funcs.length === 0) {
+    return (arg) =&gt; arg;
+  }
+  return funcs.reduce(
+    (a, b) =&gt;
+      (...args) =&gt;
+        a(b(...args))
+  );
+}
+
+function discount(x) {
+  console.log(&quot;discount&quot;);
+  return x * 0.9;
+}
+function reduce(x) {
+  console.log(&quot;reduce&quot;);
+  return x &gt; 200 ? x - 50 : x;
+}
+function discountPlus(x) {
+  console.log(&quot;discountPlus&quot;);
+  return x * 0.95;
+}
+
+// 从后往前执行传入的函数
+const getPrice = compose(discountPlus, reduce, discount);
+
+const print = console.log;
+
+print(getPrice(200));
+print(getPrice(250));
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br></div></div><p>Promise顺序执行</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>function runPromises(promiseCreators, initData) {
+  return promiseCreators.reduce(function (promise, next) {
+    return promise.then((data) =&gt; next(data));
+  }, Promise.resolve(initData));
+}
+
+function login(data) {
+  console.log(&quot;login: data&quot;, data);
+  return new Promise((resolve) =&gt; {
+    setTimeout(() =&gt; {
+      return resolve({
+        token: &quot;token&quot;,
+      });
+    }, 500);
+  });
+}
+
+function getUserInfo(data) {
+  console.log(&quot;getUserInfo: data&quot;, data);
+  return new Promise((resolve) =&gt; {
+    setTimeout(() =&gt; {
+      return resolve({
+        name: &quot;user-1&quot;,
+        id: 988,
+      });
+    }, 300);
+  });
+}
+
+function getOrders(data) {
+  console.log(&quot;getOrders: data&quot;, data);
+  return new Promise((resolve) =&gt; {
+    setTimeout(() =&gt; {
+      return resolve([
+        {
+          orderId: 1,
+          productId: 100,
+          price: 100,
+        },
+      ]);
+    }, 100);
+  });
+}
+
+const initData = { name: &quot;name&quot;, pwd: &quot;pwd&quot; };
+
+Promise.resolve(initData)
+  .then((data) =&gt; login(data))
+  .then((data) =&gt; getUserInfo(data))
+  .then((data) =&gt; getOrders(data))
+  .then((data) =&gt; console.log(&quot;orders&quot;, data));
+
+// 使用 reduce 封装的 runPromises 方法，确保返回 Promise 且执行结果是下一个函数的入参
+runPromises([login, getUserInfo, getOrders], initData).then((res) =&gt; {
+  console.log(&quot;res&quot;, res);
+});
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br></div></div><p>数组分组</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const hasOwn = Object.prototype.hasOwnProperty;
+function group(arr, fn) {
+  // 不是数组
+  if (!Array.isArray(arr)) {
+    return arr;
+  }
+  // 不是函数
+  if (typeof fn !== &quot;function&quot;) {
+    throw new TypeError(&quot;fn必须是一个函数&quot;);
+  }
+  let v;
+  return arr.reduce((obj, cur, index) =&gt; {
+    v = fn(cur, index);
+    if (!hasOwn.call(obj, v)) {
+      obj[v] = [];
+    }
+    obj[v].push(cur);
+    return obj;
+  }, {});
+}
+
+// 按照长度分组
+let result = group([&quot;apple&quot;, &quot;pear&quot;, &quot;orange&quot;, &quot;peach&quot;], (v) =&gt; v.length);
+console.log(result);
+
+// 按照份数分组
+result = group(
+  [
+    {
+      name: &quot;tom&quot;,
+      score: 60,
+    },
+    {
+      name: &quot;Jim&quot;,
+      score: 40,
+    },
+    {
+      name: &quot;Nick&quot;,
+      score: 88,
+    },
+  ],
+  (v) =&gt; v.score &gt;= 60
+);
+
+console.log(result);
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br></div></div><p>7.手写数组方法</p> <p>Array.isArray</p> <ul><li>判断是否是数组</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>const arr = [&quot;1&quot;];
+
+console.log(&quot;isArray:&quot;, Array.isArray(arr));
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>非基本使用：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const arr = [&quot;1&quot;];
+
+const proxy = new Proxy(arr, {});
+
+console.log(&quot;isArray:&quot;, Array.isArray(proxy)); // true
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>为什么上面 Array.isArray 判断代理对象是否数组返回 true 呢？</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const arr = [&quot;1&quot;];
+const proxy = new Proxy(arr, {});
+
+const log = console.log;
+
+log(&quot;__proto__:&quot;, proxy.__proto__ === Array.prototype); // __proto__: true
+log(&quot;instanceof:&quot;, proxy instanceof Array); // instanceof: true
+
+log(&quot;toString&quot;, Object.prototype.toString.call(Proxy)); // toString [object Function]
+log(&quot;Proxy.prototype:&quot;, Proxy.prototype); // Proxy.prototype: undefined
+
+log(&quot;proxy instanceof Proxy:&quot;, proxy instanceof Proxy); // 报错
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>接下来我们真正手写下 Array.isArray 的方法</p> <ul><li>Object.prototype.toString</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>Array.isArray = function (obj) {
+  return Object.prototype.toString.call(obj) === &quot;[object Array]&quot;;
+};
+
+const arr = [&quot;1&quot;];
+const proxy = new Proxy(arr, {});
+
+console.log(Array.isArray(arr));
+console.log(Array.isArray(proxy));
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><ul><li>instanceof</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>Array.isArray = function (obj) {
+  if (typeof obj !== &quot;object&quot; || obj === null) {
+    return false;
+  }
+  return obj instanceof Array;
+};
+
+const arr = [&quot;1&quot;];
+const proxy = new Proxy(arr, {});
+
+console.log(Array.isArray(arr));
+console.log(Array.isArray(proxy));
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>其实还有很多方法可以判断其数据类型，比如 constructor、isPrototypeOf等，不过我还是更推荐上面两种</p> <ul><li>Array.prototype.entries</li></ul> <p>作用：返回一个新的 Array Iterator 对象，该对象包含数组中每个索引的键/值对</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const arr = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;];
+
+const iter = arr.entries();
+console.log(&quot;iter:&quot;, iter);
+// next函数访问
+console.log(&quot;iter.next():&quot;, iter.next());
+console.log(&quot;iter.next():&quot;, iter.next());
+console.log(&quot;iter.next():&quot;, iter.next());
+console.log(&quot;iter.next():&quot;, iter.next());
+
+// for of迭代
+for (let [k, v] of arr.entries()) {
+  console.log(k, v);
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>done 表示遍历是否结束，value 返回当前遍历的值</p> <p>自己来实现下这个方法：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+Array.prototype.entries = function () {
+  // 转换对象(引用数据类型返回自身)
+  const O = Object(this);
+  let index = 0;
+  const length = O.length;
+  return {
+    next() {
+      if (index &lt; length) {
+        return { value: [index, O[index++]], done: false };
+      }
+      return { value: undefined, done: true };
+    },
+  };
+};
+
+const arr = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;];
+
+const iter = arr.entries();
+console.log(&quot;iter.next():&quot;, iter.next());
+console.log(&quot;iter.next():&quot;, iter.next());
+console.log(&quot;iter.next():&quot;, iter.next());
+
+// 不能正常执行，因为如果要能 for...of 遍历需要去实现 Symbol.iterator
+for (let [k, v] of arr.entries()) {
+  console.log(`k:${k}`, `v:${v}`);
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><p>下面添加 Symbol.iterator 方法返回 next 即可for...of</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Array.prototype.entries = function () {
+  const O = Object(this);
+  let index = 0;
+  const length = O.length;
+
+  function next() {
+    if (index &lt; length) {
+      return { value: [index, O[index++]], done: false };
+    }
+    return { value: undefined, done: true };
+  }
+  return {
+    next,
+    [Symbol.iterator]() {
+      return {
+        next,
+      };
+    },
+  };
+};
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><p>数组还有 Array.prototype.keys，Array.prototype.keys，如果我们像上面这样写等于每个方法里面都要实现[Symbol.iterator]，我们可以抽离其逻辑，代码如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Array.prototype[Symbol.iterator] = function () {
+  const O = Object(this);
+  let index = 0;
+  const length = O.length;
+
+  function next() {
+    if (index &lt; length) {
+      return { value: O[index++], done: false };
+    }
+    return { value: undefined, done: true };
+  }
+
+  return {
+    next,
+  };
+};
+
+Array.prototype.entries = function () {
+  const O = Object(this);
+  const length = O.length;
+  let entries = [];
+
+  for (let i = 0; i &lt; length; i++) {
+    entries.push([i, O[i]]);
+  }
+
+  const itr = this[Symbol.iterator].bind(entries)();
+  return {
+    next: itr.next,
+    [Symbol.iterator]() {
+      return itr;
+    },
+  };
+};
+
+Array.prototype.keys = function () {
+  const O = Object(this);
+  const length = O.length;
+  let keys = [];
+
+  for (let i = 0; i &lt; length; i++) {
+    keys.push([i]);
+  }
+
+  const itr = this[Symbol.iterator].bind(keys)();
+  return {
+    next: itr.next,
+    [Symbol.iterator]() {
+      return itr;
+    },
+  };
+};
+
+Array.prototype.values = function () {
+  const O = Object(this);
+  const length = O.length;
+  let keys = [];
+
+  for (let i = 0; i &lt; length; i++) {
+    keys.push([O[i]]);
+  }
+
+  const itr = this[Symbol.iterator].bind(keys)();
+  return {
+    next: itr.next,
+    [Symbol.iterator]() {
+      return itr;
+    },
+  };
+};
+
+const arr = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;];
+
+var iter = arr.entries();
+console.log(&quot;iter.next().value:&quot;, iter.next().value);
+console.log(&quot;iter.next().value:&quot;, iter.next().value);
+console.log(&quot;iter.next().value:&quot;, iter.next().value);
+
+for (let [k, v] of arr.entries()) {
+  console.log(`k:${k}`, `v:${v}`);
+}
+
+var iter = arr.keys();
+console.log(&quot;iter.next().value:&quot;, iter.next().value);
+console.log(&quot;iter.next().value:&quot;, iter.next().value);
+console.log(&quot;iter.next().value:&quot;, iter.next().value);
+
+for (let k of arr.keys()) {
+  console.log(`k:${k}`);
+}
+
+var iter = arr.values();
+console.log(&quot;iter.next().value:&quot;, iter.next().value);
+console.log(&quot;iter.next().value:&quot;, iter.next().value);
+console.log(&quot;iter.next().value:&quot;, iter.next().value);
+
+for (let k of arr.values()) {
+  console.log(`k:${k}`);
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br></div></div><p>Array.prototype.includes</p> <ul><li>判断数组是否含有某值，可判断NaN</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>const arr = [1, 2, 3, { a: 1 }, null, undefined, NaN, &quot;&quot;];
+
+console.log(&quot;includes null:&quot;, arr.includes(null)); // includes null: true
+console.log(&quot;indexOf null:&quot;, arr.indexOf(null)); // indexOf null: 4
+
+console.log(&quot;includes NaN:&quot;, arr.includes(NaN)); // includes NaN: true
+console.log(&quot;indexOf NaN:&quot;, arr.indexOf(NaN)); // indexOf NaN: -1
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>手写该方法</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Number.isNaN = function (param) {
+  if (typeof param === &quot;number&quot;) {
+    return isNaN(param);
+  }
+  return false;
+};
+
+Array.prototype.includes = function (item, fromIndex) {
+  // call, apply调用，严格模式
+  if (this == null) {
+    throw new TypeError(&quot;无效的this&quot;);
+  }
+
+  let O = Object(this);
+  let len = O.length &gt;&gt; 0;
+  if (len &lt;= 0) {
+    return false;
+  }
+
+  const isNAN = Number.isNaN(item);
+  for (let i = 0; i &lt; len; i++) {
+    if (O[i] === item) {
+      return true;
+    } else if (isNAN &amp;&amp; Number.isNaN(O[i])) {
+      return true;
+    }
+  }
+  return false;
+};
+
+const obj = { a: 3 };
+const arr = [1, 2, 3, { a: 1 }, null, undefined, NaN, &quot;&quot;, 0, obj, obj];
+
+console.log(&quot;includes null:&quot;, arr.includes(null));
+console.log(&quot;includes NaN:&quot;, arr.includes(NaN));
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br></div></div><p>其实 includes 还有第二个参数，表示从哪个下标开始检查，我们也来写写该方法</p> <p>注意参数的情况</p> <ul><li>转为整数:TolntegerOrlnfinity</li> <li>+lnfinity , -Infinity</li> <li>可能为负数</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>Number.isNaN = function (params) {
+  if (typeof params === &quot;number&quot;) {
+    return isNaN(params);
+  }
+  return false;
+};
+
+// 转换整数
+function ToIntegerOrInfinity(argument) {
+  const num = Number(argument);
+  // NaN 和 +0、-0 
+  if (Number.isNaN(num) || num == 0) {
+    return 0;
+  }
+  if (num === Infinity || num == -Infinity) {
+    return num;
+  }
+  let inter = Math.floor(Math.abs(num));
+  if (num &lt; 0) {
+    inter = -inter;
+  }
+  return inter;
+}
+
+Array.prototype.includes = function (item, fromIndex) {
+  // 严格模式
+  if (this == null) {
+    throw new TypeError(&quot;无效的this&quot;);
+  }
+  const O = Object(this);
+
+  const len = O.length &gt;&gt; 0;
+  if (len &lt;= 0) {
+    return false;
+  }
+
+  let n = ToIntegerOrInfinity(fromIndex);
+  if (fromIndex === undefined) {
+    n = 0;
+  }
+  if (n === +Infinity) {
+    return false;
+  }
+  // 负无穷转换为0
+  if (n === -Infinity) {
+    n = 0;
+  }
+
+  let k = n &gt;= 0 ? n : len + n;
+  if (k &lt; 0) {
+    k = 0;
+  }
+
+  const isNAN = Number.isNaN(item);
+  for (let i = k; i &lt; len; i++) {
+    if (O[i] === item) {
+      return true;
+    } else if (isNAN &amp;&amp; Number.isNaN(O[i])) {
+      return true;
+    }
+  }
+  return false;
+};
+
+const arr = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;];
+console.log(&quot;arr include -100-&gt;0:&quot;, arr.includes(&quot;c&quot;, -100)); // true
+console.log(&quot;arr include -100-&gt;0:&quot;, arr.includes(&quot;a&quot;, -1)); // false
+console.log(&quot;arr include 1:&quot;, arr.includes(&quot;a&quot;, -Infinity)); // true
+console.log(&quot;arr include 1:&quot;, arr.includes(&quot;a&quot;, Infinity)); // false
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br></div></div><p>Array.from</p> <p>有三个参数</p> <ul><li>arrayLike：类数组对象或者可遍历对象（Map、Set）等</li> <li>mapFn：可选参数，在最后生成数组后执行一次map方法后返回</li> <li>thisArg：可选参数，实际是Array.from(obj).map(mapFn, thisArg)</li></ul> <p>特殊值处理</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>console.log(&quot;Array.from1:&quot;, Array.from({})); 
+console.log(&quot;Array.from2:&quot;, Array.from(&quot;&quot;)); 
+console.log(&quot;Array.from3:&quot;, Array.from({ a: 1, length: &quot;10&quot; }));
+console.log(&quot;Array.from4:&quot;, Array.from({ a: 1, length: &quot;ss&quot; }));
+console.log(&quot;Array.from5:&quot;, Array.from([NaN, null, undefined, 0]));
+
+// 长度极限问题
+// const max = Math.pow(2, 32);
+// console.log(&quot;Array.from:&quot;, Array.from({ 0: 1, 1: 2, length: max - 1 })); // 极限
+// console.log(&quot;Array.from:&quot;, Array.from({ 0: 1, 1: 2, length: max })); // 失败
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>自己实现一个：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>//类数组的特征
+let maxSafeInteger = Math.pow(2, 32) - 1;
+
+let ToIntegerOrInfinity = function (value) {
+  let number = Number(value);
+  if (isNaN(number)) {
+    return 0;
+  }
+  if (number === 0 || !isFinite(number)) {
+    return number;
+  }
+  return (number &gt; 0 ? 1 : -1) * Math.floor(Math.abs(number));
+};
+
+let ToLength = function (value) {
+  let len = ToIntegerOrInfinity(value);
+  return Math.min(Math.max(len, 0), maxSafeInteger);
+};
+
+let isCallable = function (fn) {
+  return typeof fn === &quot;function&quot; || toStr.call(fn) === &quot;[object Function]&quot;;
+};
+
+Array.from = function (arrayLike, mapFn, thisArg) {
+  let C = this;
+
+  //判断对象是否为空
+  if (arrayLike == null) {
+    throw new TypeError(&quot;Array.from requires an array-like object - not null or undefined&quot;);
+  }
+  //检查mapFn是否是方法
+  if (typeof mapFn !== &quot;function&quot; &amp;&amp; typeof mapFn !== &quot;undefined&quot;) {
+    throw new TypeError(mapFn + &quot;is not a function&quot;);
+  }
+
+  let items = Object(arrayLike);
+  //判断 length 为数字，并且在有效范围内。
+  let len = ToLength(items.length);
+  if (len &lt;= 0) return [];
+
+  let A = isCallable(C) ? Object(new C(len)) : new Array(len);
+
+  for (let i = 0; i &lt; len; i++) {
+    let value = items[i];
+    if (mapFn) {
+      A[i] = typeof thisArg === &quot;undefined&quot; ? mapFn(value, i) : mapFn.call(thisArg, value, i);
+    } else {
+      A[i] = value;
+    }
+  }
+  return A;
+};
+
+console.log(&quot;Array.from1:&quot;, Array.from({ a: 1, length: &quot;10&quot; }));
+console.log(&quot;Array.from2:&quot;, Array.from({ a: 1, length: &quot;ss&quot; }));
+
+console.log(
+  &quot;Array.from3:&quot;,
+  Array.from({ 0: 1, 1: 2, 4: 5, length: 4 }, (x) =&gt; x + x)
+);
+
+function MyArray(length) {
+  const len = length * 2;
+  return new Array(len);
+}
+
+function MyObject(length) {
+  return {
+    length,
+  };
+}
+
+console.log(&quot;Array.from:MyArray&quot;, Array.from.call(MyArray, { length: 5 }));
+
+console.log(&quot;Array.from:MyObject&quot;, Array.from.call(MyObject, { length: 5 }));
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br></div></div><p>Array.prototype.flat</p> <ul><li>指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>const array = [1, 3, 4, [4, 5], [6, [7, 8]], [, ,], [undefined, null, NaN]];
+
+console.log(&quot;flat 1:&quot;, array.flat(1));
+
+console.log(&quot;flat 2:&quot;, array.flat(2));
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>reduce + 递归</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const array = [1, [1, , ,]];
+
+const flat = (arr) =&gt; {
+  return arr.reduce((pre, cur) =&gt; {
+    return pre.concat(Array.isArray(cur) ? flat(cur) : cur);
+  }, []);
+};
+
+console.log(flat(array)); // [ 1, 1 ]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>上面的实现存在几个弊端：</p> <ul><li>无法指定躺平深度</li> <li>性能差的一批（递归 + concat）</li> <li>丢数据（空值reduce无法遍历）</li></ul> <p>正规军入场：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>let has = Object.prototype.hasOwnProperty;
+
+let maxSafeInteger = Math.pow(2, 32) - 1;
+
+let toInteger = function (value) {
+  const number = Number(value);
+  if (isNaN(number)) {
+    return 0;
+  }
+  if (number === 0 || !isFinite(number)) {
+    return number;
+  }
+  return (number &gt; 0 ? 1 : -1) * Math.floor(Math.abs(number));
+};
+
+let toLength = function (value) {
+  let len = toInteger(value);
+  return Math.min(Math.max(len, 0), maxSafeInteger);
+};
+
+let push = Array.prototype.push;
+
+Array.prototype.flat = function (deep) {
+  let O = Object(this);
+  let sourceLen = toLength(O.length);
+  let depthNum = 1;
+  if (deep !== undefined) {
+    depthNum = toLength(deep);
+  }
+  if (depthNum &lt;= 0) {
+    return O;
+  }
+  let arr = [];
+
+  let val;
+  for (let i = 0; i &lt; sourceLen; i++) {
+    if (has.call(O, i)) {
+      val = O[i];
+      if (Array.isArray(val)) {
+        push.apply(arr, val.flat(depthNum - 1));
+      } else {
+        arr.push(val);
+      }
+    } else {
+      arr.push(undefined);
+    }
+  }
+
+  return arr;
+};
+
+let array = [1, 3, [4, 5], [6, [7, 8, [9, , 10]]], [, ,], [undefined, null, NaN]];
+
+console.log(array.flat(2));
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br></div></div><p>8.实战：数组合并</p> <p>准备好两条数据，对 uid 相同的数据进行合并</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+export const usersInfo = Array.from({ length: 200 }, (val, index) =&gt; {
+  return {
+    uid: `${index + 1}`,
+    name: `user-name-${index}`,
+    age: index + 10,
+    avatar: `http://www.my-avatar.com/${index + 1}`,
+  };
+});
+
+export const scoresInfo = Array.from({ length: 10 }, (val, index) =&gt; {
+  return {
+    uid: `${index + 1}`,
+    score: ~~(Math.random() * 10000),
+    comments: ~~(Math.random() * 10000),
+    stars: ~~(Math.random() * 1000),
+  };
+});
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><p>基础版本：</p> <ul><li>两层for循环，通过key关联</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+import * as data from &quot;./data.js&quot;;
+
+const { usersInfo, scoresInfo } = data;
+
+console.time(&quot;merge data&quot;);
+for (let i = 0; i &lt; usersInfo.length; i++) {
+  let user: any = usersInfo[i];
+  for (let j = 0; j &lt; scoresInfo.length; j++) {
+    let score = scoresInfo[j];
+    if (user.uid == score.uid) {
+      user.score = score.score;
+      user.comments = score.comments;
+      user.stars = score.stars;
+    }
+  }
+}
+console.timeEnd(&quot;merge data&quot;);
+console.log(usersInfo);
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p>hash基础版：</p> <ul><li>数组转换为map对象。数组查找变为属性查找</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+import * as data from &quot;./data.js&quot;;
+
+const { usersInfo, scoresInfo } = data;
+
+console.time(&quot;merge data&quot;);
+
+const scoreMap = scoresInfo.reduce((obj, cur) =&gt; {
+  obj[cur.uid] = cur;
+  return obj;
+}, Object.create(null));
+
+for (let i = 0; i &lt; usersInfo.length; i++) {
+  const user: any = usersInfo[i];
+  const score = scoreMap[user.uid];
+
+  if (score != null) {
+    user.score = score.score;
+    user.comments = score.comments;
+    user.stars = score.stars;
+  }
+}
+console.timeEnd(&quot;merge data&quot;);
+
+console.log(usersInfo);
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><p>hash跳出版：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+import * as data from &quot;./data.js&quot;;
+
+const { usersInfo, scoresInfo } = data;
+
+console.time(&quot;merge data&quot;);
+
+const scoreMap = scoresInfo.reduce((obj, cur) =&gt; {
+  obj[cur.uid] = cur;
+  return obj;
+}, Object.create(null));
+
+// 被合并数据的条数
+const len = scoresInfo.length;
+// 已合并的条数
+let count = 0;
+// 已遍历的次数
+let walkCount = 0;
+for (let i = 0; i &lt; usersInfo.length; i++) {
+  const user: any = usersInfo[i];
+  const score = scoreMap[user.uid];
+
+  walkCount++;
+  if (score != null) {
+    count++;
+    user.score = score.score;
+    user.comments = score.comments;
+    user.stars = score.stars;
+
+    if (count &gt;= len) {
+      break;
+    }
+  }
+}
+
+console.timeEnd(&quot;merge data&quot;);
+
+console.log(`合并完毕:遍历次数${walkCount}, 实际命中次数${count}, 预期命中次数${len}`);
+console.log(usersInfo);
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br></div></div><p>数据合并-基础 hash 跳出-倒叙版</p> <ul><li>在跳出版的基础上，一个是从前向后，一个是从后往前</li> <li>适应场景∶分页拉取数据，新数组添加在最后，倒叙更快</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+import * as data from &quot;./data.js&quot;;
+
+const { usersInfo, scoresInfo } = data;
+
+console.time(&quot;merge data&quot;);
+
+const scoreMap = scoresInfo.reduce((obj, cur) =&gt; {
+  obj[cur.uid] = cur;
+  return obj;
+}, Object.create(null));
+
+const len = scoresInfo.length;
+let count = 0;
+let walkCount = 0;
+for (let i = usersInfo.length - 1; i &gt;= 0; i--) {
+  const user: any = usersInfo[i];
+  const score = scoreMap[user.uid];
+
+  walkCount++;
+  if (score != null) {
+    count++;
+    user.score = score.score;
+    user.comments = score.comments;
+    user.stars = score.stars;
+
+    if (count &gt;= len) {
+      break;
+    }
+  }
+}
+console.timeEnd(&quot;merge data&quot;);
+
+console.log(`合并完毕：遍历次数${walkCount}, 实际命中次数${count}, 预期命中次数${len}`);
+
+console.log(usersInfo);
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br></div></div></div></div> <!----> <div class="page-edit"><div class="edit-link"><a href="https://github.com/781288772/vuepressBlog/edit/master/docs/01.前端/25.JavaScript文章/140.玩转数组高级技法.md" target="_blank" rel="noopener noreferrer">编辑</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2022/12/13, 22:22:28</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/ad94a8/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">同步与异步</div></a> <a href="/pages/8481d1/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">四级文件(测试)</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/ad94a8/" class="prev">同步与异步</a></span> <span class="next"><a href="/pages/8481d1/">四级文件(测试)</a>→
+      </span></p></div></div></div> <div class="article-list"><div class="article-title"><a href="/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/pages/ad94a8/"><div>同步与异步</div></a> <span>08-22</span></dt></dl><dl><dd>02</dd> <dt><a href="/pages/cd0fad/"><div>Vuex 的小技巧</div></a> <span>08-10</span></dt></dl><dl><dd>03</dd> <dt><a href="/pages/d1f23e/"><div>不要再直接写undefined了</div></a> <span>07-05</span></dt></dl> <dl><dd></dd> <dt><a href="/archives/" class="more">更多文章&gt;</a></dt></dl></div></div></main></div> <div class="footer"><div class="icons"><a href="mailto:781288772@qq.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/781288772" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="https://music.163.com/#/playlist?id=755597173" title="听音乐" target="_blank" class="iconfont icon-erji"></a></div> 
+  Theme by
+  <a href="https://github.com/781288772/vuepressBlog" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2020-2023
+    <span><a href="https://beian.miit.gov.cn" target="_blank">粤ICP备2021157978号</a>|Christina Chen | <a href="https://github.com/781288772/vuepressBlog/blob/master/LICENSE" target="_blank">MIT License</a></span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <div class="body-bg" style="background:url() center center / cover no-repeat;opacity:0.5;"></div> <!----> <!----></div><div class="global-ui"><div></div></div></div>
+    <script src="/assets/js/app.2fa13717.js" defer></script><script src="/assets/js/2.2056064e.js" defer></script><script src="/assets/js/3.62209b00.js" defer></script><script src="/assets/js/54.b16d82fa.js" defer></script>
+  </body>
+</html>
